@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
-        <menus>
           <Menu mnemonicParsing="false" text="Transform">
-            <items>
               <MenuItem mnemonicParsing="false" text="Translation" />
               <MenuItem mnemonicParsing="false" text="Normal Rotation" />
               <MenuItem mnemonicParsing="false" text="Rotation About a Fixed Point" />
@@ -17,17 +18,18 @@
               <MenuItem mnemonicParsing="false" text="Scaling About a Fixed Point" />
               <MenuItem mnemonicParsing="false" text="Shear" />
               <MenuItem mnemonicParsing="false" text="Reflection" />
-            </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Fill">
-            <items>
                 <MenuItem mnemonicParsing="false" text="Flood Fill" />
                 <MenuItem mnemonicParsing="false" text="Boundary Fill Approach - 8-connected" />
                 <MenuItem mnemonicParsing="false" text="Scan Line" />
-            </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Exit" />
-        </menus>
+          <Menu mnemonicParsing="false" text="Exit">
+<!--
+              Implemented for testing purposes
+-->
+              <MenuItem mnemonicParsing="false" text="Exit" onAction="#exitAll" />
+          </Menu>
       </MenuBar>
    </top>
 </BorderPane>
