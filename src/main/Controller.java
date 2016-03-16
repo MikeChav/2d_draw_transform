@@ -1,6 +1,5 @@
 package main;
 
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -12,8 +11,7 @@ public class Controller {
 		Implemented for testing purposes
 */
 		AlertBox AB = new AlertBox();
-		System.out.println("AB created");
-
+		AB.confirmExit();
 	}
 
 }
