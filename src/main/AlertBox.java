@@ -24,8 +24,6 @@ public class AlertBox {
 		alertBox.setTitle("Confirm");
 		alertBox.setScene(new Scene(layout, 300, 100));
 		alertBox.showAndWait();
-
-
 	}
 
 	@FXML

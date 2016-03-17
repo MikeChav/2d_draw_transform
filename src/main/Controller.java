@@ -10,8 +10,7 @@ public class Controller {
 /*
 		Implemented for testing purposes
 */
-		AlertBox AB = new AlertBox();
-		AB.confirmExit();
+		(new AlertBox()).confirmExit();
 	}
 
 }
