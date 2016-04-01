@@ -10,7 +10,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage Window) throws Exception {
-        Parent mainLayout = FXMLLoader.load(getClass().getResource("main.fxml"));
+        Parent mainLayout = FXMLLoader.load(getClass().getResource("layouts/main.fxml"));
         Window.setTitle("Graphics Part 2");
         Window.setScene(new Scene(
 				mainLayout,
@@ -19,14 +19,14 @@ public class Main extends Application {
 		));
         Window.show();
 
-        Window.setOnCloseRequest(e -> {
+       /* Window.setOnCloseRequest(e -> {
             e.consume();
             try {
                 (new AlertBox()).confirmExit();
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-        });
+        });*/
 
 	}
 

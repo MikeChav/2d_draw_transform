@@ -20,7 +20,7 @@ public class AlertBox {
 		alertBox.initModality(Modality.APPLICATION_MODAL);
 		alertBox.setTitle("Exiting the application");
 
-		Parent layout = FXMLLoader.load(getClass().getResource("confirmExit.fxml"));
+		Parent layout = FXMLLoader.load(getClass().getResource("layouts/confirmExit.fxml"));
 		alertBox.setTitle("Confirm");
 		alertBox.setScene(new Scene(layout, 300, 100));
 		alertBox.showAndWait();
