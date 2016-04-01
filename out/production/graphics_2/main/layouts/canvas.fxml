@@ -6,6 +6,5 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.CanvasController">
    <children>
-       <Canvas height="700.0" width="1200.0" fx:id="myCanvas"/>
    </children>
 </Pane>

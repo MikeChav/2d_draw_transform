@@ -19,17 +19,11 @@ public class Main extends Application {
 		));
         Window.show();
 
-       /* Window.setOnCloseRequest(e -> {
+        Window.setOnCloseRequest(e -> {
             e.consume();
-            try {
-                (new AlertBox()).confirmExit();
-            } catch (Exception e1) {
-                e1.printStackTrace();
-            }
-        });*/
-
+            Controller.staticExitAll();
+        });
 	}
-
 
     public static void main(String[] args) {
         launch(args);
