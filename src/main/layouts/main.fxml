@@ -1,38 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 
+<VBox fx:id="myBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller">
+    <MenuBar BorderPane.alignment="CENTER">
+        <Menu mnemonicParsing="false" text="Transform">
+            <MenuItem mnemonicParsing="false" text="Translation" />
+            <MenuItem mnemonicParsing="false" text="Normal Rotation" />
+            <MenuItem mnemonicParsing="false" text="Rotation About a Fixed Point" />
+            <MenuItem mnemonicParsing="false" text="Normal Scaling" />
+            <MenuItem mnemonicParsing="false" text="Scaling About a Fixed Point" />
+            <MenuItem mnemonicParsing="false" text="Shear" />
+            <MenuItem mnemonicParsing="false" text="Reflection" />
+        </Menu>
+        <Menu mnemonicParsing="false" text="Fill">
+            <MenuItem mnemonicParsing="false" text="Flood Fill" />
+            <MenuItem mnemonicParsing="false" text="Boundary Fill Approach - 8-connected" />
+            <MenuItem mnemonicParsing="false" text="Scan Line" />
+        </Menu>
+        <Menu mnemonicParsing="false" text="Exit">
+            <MenuItem mnemonicParsing="false" onAction="#exitAll" text="Exit" />
+        </Menu>
+    </MenuBar>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller" >
-   <top>
-      <MenuBar BorderPane.alignment="CENTER">
-          <Menu mnemonicParsing="false" text="Transform">
-              <MenuItem mnemonicParsing="false" text="Translation" />
-              <MenuItem mnemonicParsing="false" text="Normal Rotation" />
-              <MenuItem mnemonicParsing="false" text="Rotation About a Fixed Point" />
-              <MenuItem mnemonicParsing="false" text="Normal Scaling" />
-              <MenuItem mnemonicParsing="false" text="Scaling About a Fixed Point" />
-              <MenuItem mnemonicParsing="false" text="Shear" />
-              <MenuItem mnemonicParsing="false" text="Reflection" />
-          </Menu>
-          <Menu mnemonicParsing="false" text="Fill">
-                <MenuItem mnemonicParsing="false" text="Flood Fill" />
-                <MenuItem mnemonicParsing="false" text="Boundary Fill Approach - 8-connected" />
-                <MenuItem mnemonicParsing="false" text="Scan Line" />
-          </Menu>
-          <Menu mnemonicParsing="false" text="Exit">
-<!--
-              Implemented for testing purposes
--->
-              <MenuItem mnemonicParsing="false" text="Exit" onAction="#exitAll" />
-          </Menu>
-      </MenuBar>
-   </top>
-    <center>
-        <fx:include source="canvas.fxml"/>
-    </center>
-</BorderPane>
+    <Canvas fx:id="myCanvas" height="700.0" width="1200.0" />
+
+</VBox>
