@@ -7,6 +7,8 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.Pane?>
 <VBox fx:id="myBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller">
     <MenuBar BorderPane.alignment="CENTER">
         <Menu mnemonicParsing="false" text="Transform">
@@ -28,6 +30,9 @@
         </Menu>
     </MenuBar>
 
-    <Canvas fx:id="myCanvas" height="700.0" width="1200.0" />
+    <Pane fx:id="Container">
+        <!--<StackPane fx:id="layout"></StackPane>-->
+        <Canvas fx:id="myCanvas" height="700.0" width="1200.0" />
+    </Pane>
 
 </VBox>
