@@ -93,7 +93,7 @@ public class Controller  implements Initializable {
 
 		while(true){
 			graphicsContext.strokeLine(x0, y0, x0, y0);
-			if (x0>=x1 && y0>=y1)
+			if (x0==x1 && y0==y1)
 				break;
 			e2 = 2.*err;
 			if (e2 > dy) { err += dy; x0 += sx; } /* e_xy+e_x > 0 */
