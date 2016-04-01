@@ -25,10 +25,11 @@ public class Controller  implements Initializable {
 	public Canvas myCanvas;
 	public Pane Container;
 	public VBox myBox;
-	private int AxisWidth = 1276;
-	private int AxisHeight = 700;
+	private int AxisWidth ;
+	private int AxisHeight ;
 
-
+    int XRange=8;
+    int YRange=6;
 
 	GraphicsContext graphicsContext;
 
@@ -40,22 +41,22 @@ public class Controller  implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
+		graphicsContext = myCanvas.getGraphicsContext2D();
+
+         AxisWidth = (int)myCanvas.getWidth();
+        AxisHeight = (int)myCanvas.getHeight();
+
         Axes axes = new Axes(
                 AxisWidth, AxisHeight,
-                -8, 8, 1,
-                -6, 6,1
+                -XRange, XRange, 1,
+                -YRange, YRange,1
         );
-
 
         StackPane layout = new StackPane(axes);
         layout.setStyle("-fx-background-color: slategrey");
         Canvas v  = (Canvas)Container.getChildren().get(0);
         Container.getChildren().clear();
         Container.getChildren().addAll(layout,v);
-
-
-
-		graphicsContext = myCanvas.getGraphicsContext2D();
 
 		graphicsContext.setFill(Color.TRANSPARENT);
 		graphicsContext.fillRect(0, 0, myCanvas.getWidth(), myCanvas.getHeight());
@@ -117,11 +118,11 @@ public class Controller  implements Initializable {
 	}
 
 	private double translateX(double x){
-		return ((x-(AxisWidth/2))/79.75);
+		return ((x-(AxisWidth/2))/(AxisWidth/(2*XRange)));
 	}
 
 	private double translateY(double y){
-		return (((AxisHeight/2) - y)/(175/3));
+		return (((AxisHeight/2) - y)/(AxisHeight/(2*YRange)));
 	}
 
 }
