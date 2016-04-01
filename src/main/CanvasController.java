@@ -8,9 +8,12 @@ import javafx.scene.paint.Color;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-/*
- * Created by michael on 4/1/16.
- */
+/**
+ **
+ ** Created by michael on 4/1/16.
+ **
+ **/
+
 public class CanvasController implements Initializable {
 
 	public Canvas myCanvas;
@@ -27,6 +30,5 @@ public class CanvasController implements Initializable {
 		graphicsContext.setLineWidth(2.0);
 		graphicsContext.strokeLine(200.0, 500.0, 200.0, 500.0);
 	}
-
 
 }
