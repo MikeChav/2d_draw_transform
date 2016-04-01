@@ -30,11 +30,7 @@
     </MenuBar>
 
     <Pane fx:id="Container">
-        <Canvas fx:id="myCanvas" height="700.0" width="1200">
-        <fx:define>
-            <Screen fx:factory="getPrimary" fx:id="screen"/>
-        </fx:define>
-        </Canvas>
+        <Canvas fx:id="myCanvas"/>
     </Pane>
 
 </VBox>
