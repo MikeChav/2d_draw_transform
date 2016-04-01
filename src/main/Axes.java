@@ -5,7 +5,7 @@ import javafx.geometry.Side;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.layout.Pane;
 
-/**
+/*
  * Created by tmaha on 04/01/16.
  */
 public class Axes extends Pane{

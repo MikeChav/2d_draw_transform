@@ -25,6 +25,9 @@ public class Controller  implements Initializable {
 	public Canvas myCanvas;
 	public Pane Container;
 	public VBox myBox;
+	private int AxisWidth = 1276;
+	private int AxisHeight = 700;
+
 
 
 	GraphicsContext graphicsContext;
@@ -38,7 +41,7 @@ public class Controller  implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 
         Axes axes = new Axes(
-                1276, 700,
+                AxisWidth, AxisHeight,
                 -8, 8, 1,
                 -6, 6,1
         );
@@ -57,7 +60,7 @@ public class Controller  implements Initializable {
 		graphicsContext.setFill(Color.TRANSPARENT);
 		graphicsContext.fillRect(0, 0, myCanvas.getWidth(), myCanvas.getHeight());
 		graphicsContext.setStroke(Color.WHITE);
-		graphicsContext.setLineWidth(2.0);
+		graphicsContext.setLineWidth(1.0);
 
 		myCanvas.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
 			if (mouseLocation != null)
@@ -65,6 +68,8 @@ public class Controller  implements Initializable {
 			mouseLocation = new Point2D(e.getX(), e.getY());
             System.out.println(myCanvas.getWidth()+";"+myCanvas.getHeight());
             System.out.println(mouseLocation.getX()+","+mouseLocation.getY());
+			Point2D newPoint = translatePoint(mouseLocation);
+			System.out.println("Translated: ("+newPoint.getX()+", "+newPoint.getY()+")");
 
 			if (listOfPoints.isEmpty())
 				bresenhamLine(mouseLocation.getX(), mouseLocation.getY(), mouseLocation.getX(), mouseLocation.getY());
@@ -105,6 +110,18 @@ public class Controller  implements Initializable {
 	}
 	public  void exitAll(){
 		staticExitAll();
+	}
+
+	private Point2D translatePoint(Point2D point) {
+		return (new Point2D(translateX(point.getX()), translateY(point.getY())));
+	}
+
+	private double translateX(double x){
+		return ((x-(AxisWidth/2))/79.75);
+	}
+
+	private double translateY(double y){
+		return (((AxisHeight/2) - y)/(175/3));
 	}
 
 }
