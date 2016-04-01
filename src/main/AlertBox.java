@@ -10,7 +10,7 @@ import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-/**
+/*
  * Created by michael on 3/15/16.
  */
 public class AlertBox {
