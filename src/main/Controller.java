@@ -10,6 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
@@ -35,9 +36,25 @@ public class Controller  implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+
+        Axes axes = new Axes(
+                1200, 700,
+                -8, 8, 1,
+                -6, 6,1
+        );
+
+
+        StackPane layout = new StackPane(axes);
+        layout.setStyle("-fx-background-color: forestgreen");
+        Canvas v  = (Canvas)Container.getChildren().get(0);
+        Container.getChildren().clear();
+        Container.getChildren().addAll(layout,v);
+
+
+
 		graphicsContext = myCanvas.getGraphicsContext2D();
 
-		graphicsContext.setFill(Color.SLATEGRAY);
+		graphicsContext.setFill(Color.TRANSPARENT);
 		graphicsContext.fillRect(0, 0, myCanvas.getWidth(), myCanvas.getHeight());
 		graphicsContext.setStroke(Color.WHITE);
 		graphicsContext.setLineWidth(2.0);
@@ -46,9 +63,12 @@ public class Controller  implements Initializable {
 			if (mouseLocation != null)
 				prevMouseLocation = mouseLocation;
 			mouseLocation = new Point2D(e.getX(), e.getY());
+            System.out.println(myCanvas.getWidth()+";"+myCanvas.getHeight());
+            System.out.println(mouseLocation.getX()+","+mouseLocation.getY());
 
 			if (listOfPoints.isEmpty())
 				bresenhamLine(mouseLocation.getX(), mouseLocation.getY(), mouseLocation.getX(), mouseLocation.getY());
+
 			else{
 				if(e.getClickCount() == 2) {
 					Point2D firstPoint = listOfPoints.get(0);
@@ -61,21 +81,14 @@ public class Controller  implements Initializable {
 		});
 
 
-//		Axes axes = new Axes(
-//				1366, 768,
-//				-8, 8, 1,
-//				-6, 6,1
-//		);
-//
-//		Plot plot = new Plot(
-//				x -> .25 * (x + 4) * (x + 1) * (x - 2),
-//				0, 0, 0,
-//				axes
-//		);
+
 //
 //
 //		addListeners();
+
 //
+
+
 	}
 
 	private void bresenhamLine( double x0, double y0, double x1, double y1) {
