@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 
 <VBox fx:id="myBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller">
-    <MenuBar>
+    <MenuBar fx:id="menubar">
         <Menu mnemonicParsing="false" text="Transform">
             <MenuItem mnemonicParsing="false" text="Translation" />
             <MenuItem mnemonicParsing="false" text="Normal Rotation" />

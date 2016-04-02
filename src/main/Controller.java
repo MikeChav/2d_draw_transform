@@ -16,7 +16,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
-import java.awt.*;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
@@ -69,9 +68,7 @@ public class Controller  implements Initializable {
 		graphicsContext.setStroke(Color.WHITE);
 		graphicsContext.setLineWidth(1.0);
 
-		myCanvas.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
-			drawPolygon(e);
-		});
+		myCanvas.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> drawPolygon(e));
 	}
 
 	private void bresenhamLine( double x0, double y0, double x1, double y1) {
@@ -129,7 +126,7 @@ public class Controller  implements Initializable {
 			if(e.getClickCount() == 1) {
 				bresenhamLine(prevMouseLocation.getX(), prevMouseLocation.getY(), mouseLocation.getX(), mouseLocation.getY());
 			}
-			else if (e.getClickCount() == 2) {
+			if (e.getClickCount() == 2 || listOfPoints.size() == 8) {
 				Point2D firstPoint = listOfPoints.get(0);
 				bresenhamLine(mouseLocation.getX(), mouseLocation.getY(), firstPoint.getX(), firstPoint.getY());
 			}
