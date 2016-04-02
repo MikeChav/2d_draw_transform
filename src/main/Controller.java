@@ -1,3 +1,4 @@
+
 package main;
 
 import javafx.application.Platform;
@@ -8,12 +9,14 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.MenuBar;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
+import java.awt.*;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
@@ -21,7 +24,7 @@ import java.util.ResourceBundle;
 
 public class Controller  implements Initializable {
 
-
+	public MenuBar menubar;
 	public Canvas myCanvas;
 	public Pane Container;
 	public VBox myBox;
@@ -43,8 +46,11 @@ public class Controller  implements Initializable {
 
 		graphicsContext = myCanvas.getGraphicsContext2D();
 
-         AxisWidth = (int)myCanvas.getWidth();
-        AxisHeight = (int)myCanvas.getHeight();
+		myCanvas.setHeight(Main.getHeight() - menubar.getHeight());
+		myCanvas.setWidth(Main.getWidth());
+
+		AxisWidth = (int) myCanvas.getWidth();
+        AxisHeight = (int) myCanvas.getHeight();
 
         Axes axes = new Axes(
                 AxisWidth, AxisHeight,
@@ -64,26 +70,7 @@ public class Controller  implements Initializable {
 		graphicsContext.setLineWidth(1.0);
 
 		myCanvas.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
-			if (mouseLocation != null)
-				prevMouseLocation = mouseLocation;
-			mouseLocation = new Point2D(e.getX(), e.getY());
-            System.out.println(myCanvas.getWidth()+";"+myCanvas.getHeight());
-            System.out.println(mouseLocation.getX()+","+mouseLocation.getY());
-			Point2D newPoint = translatePoint(mouseLocation);
-			System.out.println("Translated: ("+newPoint.getX()+", "+newPoint.getY()+")");
-
-			if (listOfPoints.isEmpty())
-				bresenhamLine(mouseLocation.getX(), mouseLocation.getY(), mouseLocation.getX(), mouseLocation.getY());
-
-			else{
-				if(e.getClickCount() == 2) {
-					Point2D firstPoint = listOfPoints.get(0);
-					bresenhamLine(mouseLocation.getX(), mouseLocation.getY(), firstPoint.getX(), firstPoint.getY());
-				}
-				else if (e.getClickCount() == 1)
-					bresenhamLine(prevMouseLocation.getX(), prevMouseLocation.getY(), mouseLocation.getX(), mouseLocation.getY());
-			}
-			listOfPoints.add(mouseLocation);
+			drawPolygon(e);
 		});
 	}
 
@@ -123,6 +110,36 @@ public class Controller  implements Initializable {
 
 	private double translateY(double y){
 		return (((AxisHeight/2) - y)/(AxisHeight/(2*YRange)));
+	}
+
+	private List<Point2D> drawPolygon(MouseEvent e){
+		if (mouseLocation == null && prevMouseLocation == null)
+			listOfPoints = new LinkedList<>();
+
+		if (mouseLocation != null)
+			prevMouseLocation = mouseLocation;
+		mouseLocation = new Point2D(e.getX(), e.getY());
+		Point2D newPoint = translatePoint(mouseLocation);
+
+		System.out.println("Translated: ("+newPoint.getX()+", "+newPoint.getY()+")");
+
+		if (listOfPoints.isEmpty())
+			bresenhamLine(mouseLocation.getX(), mouseLocation.getY(), mouseLocation.getX(), mouseLocation.getY());
+		else{
+			if(e.getClickCount() == 1) {
+				bresenhamLine(prevMouseLocation.getX(), prevMouseLocation.getY(), mouseLocation.getX(), mouseLocation.getY());
+			}
+			else if (e.getClickCount() == 2) {
+				Point2D firstPoint = listOfPoints.get(0);
+				bresenhamLine(mouseLocation.getX(), mouseLocation.getY(), firstPoint.getX(), firstPoint.getY());
+			}
+		}
+		listOfPoints.add(mouseLocation);
+		if (e.getClickCount() == 2) {
+			mouseLocation = null;
+			prevMouseLocation = null;
+		}
+		return listOfPoints;
 	}
 
 }
