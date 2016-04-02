@@ -16,7 +16,7 @@
             <MenuItem mnemonicParsing="false" text="Normal Scaling" />
             <MenuItem mnemonicParsing="false" text="Scaling About a Fixed Point" />
             <MenuItem mnemonicParsing="false" text="Shear" />
-            <MenuItem mnemonicParsing="false" text="Reflection" />
+            <MenuItem mnemonicParsing="false" text="Reflection" onAction="#reflection" />
         </Menu>
         <Menu mnemonicParsing="false" text="Fill">
             <MenuItem mnemonicParsing="false" text="Flood Fill" />

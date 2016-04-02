@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <RadioButton layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="X-Axis" fx:id="xAxis">
+         <toggleGroup>
+            <ToggleGroup fx:id="ReflectionType" />
+         </toggleGroup>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+         <VBox.margin>
+            <Insets left="10.0" />
+         </VBox.margin></RadioButton>
+      <RadioButton fx:id="yAxis" layoutX="10.0" layoutY="28.0" mnemonicParsing="false" text="Y-Axis" toggleGroup="$ReflectionType">
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+         <VBox.margin>
+            <Insets left="10.0" />
+         </VBox.margin></RadioButton>
+      <RadioButton fx:id="yEqualsX" layoutX="10.0" layoutY="28.0" mnemonicParsing="false" text="X=Y" toggleGroup="$ReflectionType">
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+         <VBox.margin>
+            <Insets left="10.0" />
+         </VBox.margin></RadioButton>
+      <RadioButton fx:id="yMinusX" mnemonicParsing="false" text="Y= -X" toggleGroup="$ReflectionType">
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+         <VBox.margin>
+            <Insets left="10.0" />
+         </VBox.margin></RadioButton>
+      <RadioButton fx:id="customLine" layoutX="10.0" layoutY="28.0" mnemonicParsing="false" toggleGroup="$ReflectionType">
+         <graphic>
+            <HBox>
+               <children>
+                  <TextField fx:id="customX" prefHeight="26.0" prefWidth="66.0" promptText="X=">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin></TextField>
+                  <TextField fx:id="customY" prefHeight="26.0" prefWidth="66.0" promptText="Y=" />
+               </children>
+            </HBox>
+         </graphic>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+         <VBox.margin>
+            <Insets left="10.0" />
+         </VBox.margin></RadioButton>
+   </children>
+</VBox>

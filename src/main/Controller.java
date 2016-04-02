@@ -3,19 +3,19 @@ package main;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.MenuBar;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
@@ -23,22 +23,26 @@ import java.util.ResourceBundle;
 
 public class Controller  implements Initializable {
 
-	public MenuBar menubar;
-	public Canvas myCanvas;
-	public Pane Container;
-	public VBox myBox;
-	private int AxisWidth ;
-	private int AxisHeight ;
+	@FXML
+	MenuBar menubar;
+	@FXML
+	Canvas myCanvas;
+	@FXML
+	Pane Container;
+	@FXML
+	VBox myBox;
+	@FXML
+	RadioButton xAxis, yAxis, yEqualsX, yMinusX, customLine;
+	@FXML
+	TextField customX, customY;
 
-    int XRange=8;
-    int YRange=6;
+    private int AxisWidth, AxisHeight, XRange=8, YRange=6;
 
 	GraphicsContext graphicsContext;
 
-	Point2D mouseLocation = null;
-	Point2D prevMouseLocation = null;
+	Point2D mouseLocation = null, prevMouseLocation = null;
 
-	List<Point2D> listOfPoints = new LinkedList<>();
+	LinkedList<Point2D> listOfPoints = new LinkedList<>();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -86,14 +90,15 @@ public class Controller  implements Initializable {
 		}
 	}
 
-	@FXML
 	public static void staticExitAll(){
 		(new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to exit?")).showAndWait()
 				.filter(response -> response == ButtonType.OK)
 				.ifPresent(response -> Platform.exit());
 
 	}
-	public  void exitAll(){
+
+	@FXML
+	private  void exitAll(){
 		staticExitAll();
 	}
 
@@ -120,23 +125,63 @@ public class Controller  implements Initializable {
 
 		System.out.println("Translated: ("+newPoint.getX()+", "+newPoint.getY()+")");
 
-		if (listOfPoints.isEmpty())
+		listOfPoints.add(mouseLocation);
+		if (listOfPoints.size() == 1)
 			bresenhamLine(mouseLocation.getX(), mouseLocation.getY(), mouseLocation.getX(), mouseLocation.getY());
 		else{
-			if(e.getClickCount() == 1) {
+			if(e.getClickCount() == 1)
 				bresenhamLine(prevMouseLocation.getX(), prevMouseLocation.getY(), mouseLocation.getX(), mouseLocation.getY());
-			}
 			if (e.getClickCount() == 2 || listOfPoints.size() == 8) {
 				Point2D firstPoint = listOfPoints.get(0);
 				bresenhamLine(mouseLocation.getX(), mouseLocation.getY(), firstPoint.getX(), firstPoint.getY());
+				mouseLocation = null;
+				prevMouseLocation = null;
+				listOfPoints.add(firstPoint);
 			}
 		}
-		listOfPoints.add(mouseLocation);
-		if (e.getClickCount() == 2) {
-			mouseLocation = null;
-			prevMouseLocation = null;
-		}
 		return listOfPoints;
+	}
+
+	/**To be added before transforming or filling**/
+	private void ensureDrawnPolygon(){
+		if (listOfPoints.isEmpty())
+			(new Alert(Alert.AlertType.ERROR, "Please draw something first")).showAndWait();
+		if (listOfPoints.getFirst() != listOfPoints.getLast())
+			bresenhamLine(listOfPoints.getFirst().getX(), listOfPoints.getFirst().getY(),
+						  listOfPoints.getLast().getX(), listOfPoints.getLast().getY());
+	}
+
+	@FXML
+	private void reflection(){
+		ensureDrawnPolygon();
+		Alert choosePolygon = new Alert(Alert.AlertType.CONFIRMATION, "About which line do you want to reflect?");
+		try {
+			choosePolygon.getDialogPane().setContent(FXMLLoader.load(getClass().getResource("layouts/reflection.fxml")));
+		}
+		catch (IOException e){
+			return;
+		}
+
+		choosePolygon.showAndWait()
+				.filter(response -> response == ButtonType.OK)
+				.ifPresent(response -> {
+					if (yAxis.isSelected()) {
+
+					}
+					else if (xAxis.isSelected()) {
+
+					}
+					else if (yEqualsX.isSelected()) {
+
+					}
+					else if (yMinusX.isSelected()) {
+
+					}
+					else {
+
+					}
+				});
+
 	}
 
 }
