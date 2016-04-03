@@ -73,12 +73,10 @@ public class Commons{
 	}
 
 	public static void Draw(Point2D[] list){
-
-		for(int x=0;x<list.length;x++){
-			if(x+1<list.length) {
+		int length = list.length;
+		for(int x=0;x<length;x++)
+			if(x+1<length)
 				bresenhamLine((int)list[x].getX(), (int)list[x].getY(), (int)list[x + 1].getX(),(int) list[x + 1].getY());
-			}
-		}
 	}
 
 

@@ -116,15 +116,12 @@ public class Controller  implements Initializable {
 
 	@FXML
 	private void doRotation(){
-
 		new AlertBox("rotation","rotate about point",266,280);
 	}
 
 	@FXML
 	private void doScaling(){
-
 		new AlertBox("scaling","",266,280);
-
 	}
 
 }
