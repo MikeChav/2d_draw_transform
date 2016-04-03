@@ -13,7 +13,7 @@ public class ScalingController {
     TextField ScaleX,ScaleY,CentreX,CentreY;
 
     public void doScale(){
-        new Transformation().Scaling(Integer.parseInt(ScaleX.getText()),Integer.parseInt(ScaleY.getText()),Integer.parseInt(CentreX.getText()),Integer.parseInt(CentreY.getText()));
+        new Transformation().Scaling(Double.parseDouble(ScaleX.getText()), Double.parseDouble(ScaleY.getText()), Integer.parseInt(CentreX.getText()),Integer.parseInt(CentreY.getText()));
 
     }
 }
