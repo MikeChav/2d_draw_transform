@@ -114,4 +114,17 @@ public class Controller  implements Initializable {
 		new AlertBox("reflection", "Reflect About a Line", 266, 280);
 	}
 
+	@FXML
+	private void doRotation(){
+
+		new AlertBox("rotation","rotate about point",266,280);
+	}
+
+	@FXML
+	private void doScaling(){
+
+		new AlertBox("scaling","",266,280);
+
+	}
+
 }
