@@ -3,6 +3,7 @@ package main;
 import javafx.geometry.Point2D;
 import javafx.scene.control.Alert;
 
+import java.lang.reflect.Array;
 import java.util.LinkedList;
 
 /**
@@ -16,6 +17,7 @@ import java.util.LinkedList;
 public class Transformation {
 
 	LinkedList<Point2D> listOfPoints;
+
 
 	public Transformation(){
 		this.listOfPoints = Controller.listOfPoints;
@@ -35,5 +37,47 @@ public class Transformation {
 	public void reflection(Point2D p1, Point2D p2) {
 		ensureDrawnPolygon();
 	}
+
+	public void Rotation(double angledegree,int x,int y){
+
+		ensureDrawnPolygon();
+
+		double angle = Math.PI*(angledegree/180.0);
+
+		double[][] RotationMatrix = {{Math.cos(angle), Math.sin(angle)}, {-Math.sin(angle), Math.cos(angle)}};
+
+		Point2D[] PointsResult = new Point2D[listOfPoints.size()];
+
+		for(int z=0;z<listOfPoints.size();z++){
+
+			Point2D translatedPoint = Commons.translatePoint(listOfPoints.get(z));
+			double xc =  ((translatedPoint.getX()-x)*RotationMatrix[0][0])+((translatedPoint.getY()-y)*RotationMatrix[0][1]);
+			double yc = ((translatedPoint.getX()-x)*RotationMatrix[1][0])+((translatedPoint.getY()-y)*RotationMatrix[1][1]);
+
+			PointsResult[z] =(Commons.translatebackPoint(new Point2D(xc,yc)));
+		}
+		Commons.Draw(PointsResult);
+	}
+
+	public void Scaling(int ScaleX,int ScaleY,int x,int y){
+
+		ensureDrawnPolygon();
+
+		int[][] ScalingMatrix = {{ScaleX,0},{0,ScaleY}};
+
+		Point2D[] PointsResult = new Point2D[listOfPoints.size()];
+
+		for(int z=0;z<listOfPoints.size();z++){
+
+			Point2D translatedPoint = Commons.translatePoint(listOfPoints.get(z));
+			double xc =  ((translatedPoint.getX()-x)*ScalingMatrix[0][0])+((translatedPoint.getY()-y)*ScalingMatrix[0][1]);
+			double yc = ((translatedPoint.getX()-x)*ScalingMatrix[1][0])+((translatedPoint.getY()-y)*ScalingMatrix[1][1]);
+
+			PointsResult[z] =(Commons.translatebackPoint(new Point2D(xc,yc)));
+		}
+		Commons.Draw(PointsResult);
+	}
+
+
 
 }
