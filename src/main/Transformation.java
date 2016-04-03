@@ -66,11 +66,20 @@ public class Transformation {
 	private void transformMe(double[][] matrix, int x, int y) {
 		Point2D[] PointsResult = new Point2D[listOfPoints.size()];
 
+		double xc,yc;
+
 		for(int z=0;z<listOfPoints.size();z++){
 
 			Point2D translatedPoint = Commons.translatePoint(listOfPoints.get(z));
-			double xc =  ((translatedPoint.getX()-x)*matrix[0][0])+((translatedPoint.getY()-y)*matrix[0][1])+(1*matrix[0][2]);
-			double yc = ((translatedPoint.getX()-x)*matrix[1][0])+((translatedPoint.getY()-y)*matrix[1][1])+ (1*matrix[1][2]);
+			if(matrix.length>2) {
+				xc = ((translatedPoint.getX() - x) * matrix[0][0]) + ((translatedPoint.getY() - y) * matrix[0][1]) + (1 * matrix[0][2]);
+				yc = ((translatedPoint.getX() - x) * matrix[1][0]) + ((translatedPoint.getY() - y) * matrix[1][1]) + (1 * matrix[1][2]);
+			}
+			else
+			{
+				xc = ((translatedPoint.getX() - x) * matrix[0][0]) + ((translatedPoint.getY() - y) * matrix[0][1]) ;
+				yc = ((translatedPoint.getX() - x) * matrix[1][0]) + ((translatedPoint.getY() - y) * matrix[1][1]);
+			}
 
 			PointsResult[z] =(Commons.translatebackPoint(new Point2D(xc,yc)));
 		}
