@@ -55,14 +55,22 @@ public class Transformation {
 
 	}
 
+	public void Shear(double ShX,double ShY,double refX,double refY){
+
+		ensureDrawnPolygon();
+		double[][] ShearMatrix = {{1,ShX,-ShX*refY},{ShY,1,-ShY*refX},{0,0,1}};
+		transformMe(ShearMatrix,0,0);
+
+	}
+
 	private void transformMe(double[][] matrix, int x, int y) {
 		Point2D[] PointsResult = new Point2D[listOfPoints.size()];
 
 		for(int z=0;z<listOfPoints.size();z++){
 
 			Point2D translatedPoint = Commons.translatePoint(listOfPoints.get(z));
-			double xc =  ((translatedPoint.getX()-x)*matrix[0][0])+((translatedPoint.getY()-y)*matrix[0][1]);
-			double yc = ((translatedPoint.getX()-x)*matrix[1][0])+((translatedPoint.getY()-y)*matrix[1][1]);
+			double xc =  ((translatedPoint.getX()-x)*matrix[0][0])+((translatedPoint.getY()-y)*matrix[0][1])+(1*matrix[0][2]);
+			double yc = ((translatedPoint.getX()-x)*matrix[1][0])+((translatedPoint.getY()-y)*matrix[1][1])+ (1*matrix[1][2]);
 
 			PointsResult[z] =(Commons.translatebackPoint(new Point2D(xc,yc)));
 		}

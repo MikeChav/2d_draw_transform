@@ -14,6 +14,11 @@ public class RotationController {
     @FXML
     public void getData(){
 
+        if(XCoordinate.getText().equals(""))
+            XCoordinate.setText("0");
+        if(YCoordinate.getText().equals(""))
+            YCoordinate.setText("0");
+
         new Transformation().Rotation(Double.parseDouble(RotationAngle.getText()),Integer.parseInt(XCoordinate.getText()),Integer.parseInt(YCoordinate.getText()));
 
     }
