@@ -3,7 +3,6 @@ package main;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
@@ -24,8 +23,7 @@ public class Controller  implements Initializable {
 
 	@FXML
 	MenuBar menuBar;
-	@FXML
-	Canvas myCanvas;
+	public static Canvas myCanvas;
 	@FXML
 	Pane Container;
 	@FXML
