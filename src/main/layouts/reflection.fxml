@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.VBox?>
 
 <VBox xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
       <RadioButton layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="X-Axis" fx:id="xAxis">
          <toggleGroup>
             <ToggleGroup fx:id="ReflectionType" />
@@ -43,13 +42,12 @@
       <RadioButton fx:id="customLine" layoutX="10.0" layoutY="28.0" mnemonicParsing="false" toggleGroup="$ReflectionType">
          <graphic>
             <HBox>
-               <children>
-                  <TextField fx:id="customX" prefHeight="26.0" prefWidth="66.0" promptText="X=">
+                  <TextField fx:id="customM" prefHeight="26.0" prefWidth="66.0" promptText="m=">
                      <HBox.margin>
                         <Insets right="5.0" />
-                     </HBox.margin></TextField>
-                  <TextField fx:id="customY" prefHeight="26.0" prefWidth="66.0" promptText="Y=" />
-               </children>
+                     </HBox.margin>
+                  </TextField>
+                  <TextField fx:id="customC" prefHeight="26.0" prefWidth="66.0" promptText="c=" />
             </HBox>
          </graphic>
          <padding>
@@ -58,5 +56,4 @@
          <VBox.margin>
             <Insets left="10.0" />
          </VBox.margin></RadioButton>
-   </children>
 </VBox>

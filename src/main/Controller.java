@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
 public class Controller  implements Initializable {
 
 	@FXML
-	MenuBar menubar;
+	MenuBar menuBar;
 	@FXML
 	Canvas myCanvas;
 	@FXML
@@ -38,7 +38,7 @@ public class Controller  implements Initializable {
 
     private int AxisWidth, AxisHeight, XRange=8, YRange=6;
 
-	GraphicsContext graphicsContext;
+	public static GraphicsContext graphicsContext;
 
 	Point2D mouseLocation = null, prevMouseLocation = null;
 
@@ -49,8 +49,8 @@ public class Controller  implements Initializable {
 
 		graphicsContext = myCanvas.getGraphicsContext2D();
 
-		myCanvas.setHeight(Main.getHeight() - menubar.getHeight());
-		myCanvas.setWidth(Main.getWidth());
+		myCanvas.setHeight(Commons.getHeight() - menuBar.getHeight());
+		myCanvas.setWidth(Commons.getWidth());
 
 		AxisWidth = (int) myCanvas.getWidth();
         AxisHeight = (int) myCanvas.getHeight();
@@ -72,22 +72,7 @@ public class Controller  implements Initializable {
 		graphicsContext.setStroke(Color.WHITE);
 		graphicsContext.setLineWidth(1.0);
 
-		myCanvas.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> drawPolygon(e));
-	}
-
-	private void bresenhamLine( double x0, double y0, double x1, double y1) {
-		double dx =  Math.abs(x1-x0), sx = x0<x1 ? 1. : -1.;
-		double dy = -Math.abs(y1-y0), sy = y0<y1 ? 1. : -1.;
-		double err = dx+dy, e2; /* error value e_xy */
-
-		while(true){
-			graphicsContext.strokeLine(x0, y0, x0, y0);
-			if (x0==x1 && y0==y1)
-				break;
-			e2 = 2.*err;
-			if (e2 > dy) { err += dy; x0 += sx; } /* e_xy+e_x > 0 */
-			if (e2 < dx) { err += dx; y0 += sy; } /* e_xy+e_y < 0 */
-		}
+		myCanvas.addEventFilter(MouseEvent.MOUSE_CLICKED, this::drawPolygon);
 	}
 
 	public static void staticExitAll(){
@@ -127,13 +112,13 @@ public class Controller  implements Initializable {
 
 		listOfPoints.add(mouseLocation);
 		if (listOfPoints.size() == 1)
-			bresenhamLine(mouseLocation.getX(), mouseLocation.getY(), mouseLocation.getX(), mouseLocation.getY());
+			Commons.bresenhamLine(mouseLocation.getX(), mouseLocation.getY(), mouseLocation.getX(), mouseLocation.getY());
 		else{
 			if(e.getClickCount() == 1)
-				bresenhamLine(prevMouseLocation.getX(), prevMouseLocation.getY(), mouseLocation.getX(), mouseLocation.getY());
+				Commons.bresenhamLine(prevMouseLocation.getX(), prevMouseLocation.getY(), mouseLocation.getX(), mouseLocation.getY());
 			if (e.getClickCount() == 2 || listOfPoints.size() == 8) {
 				Point2D firstPoint = listOfPoints.get(0);
-				bresenhamLine(mouseLocation.getX(), mouseLocation.getY(), firstPoint.getX(), firstPoint.getY());
+				Commons.bresenhamLine(mouseLocation.getX(), mouseLocation.getY(), firstPoint.getX(), firstPoint.getY());
 				mouseLocation = null;
 				prevMouseLocation = null;
 				listOfPoints.add(firstPoint);
@@ -143,17 +128,10 @@ public class Controller  implements Initializable {
 	}
 
 	/**To be added before transforming or filling**/
-	private void ensureDrawnPolygon(){
-		if (listOfPoints.isEmpty())
-			(new Alert(Alert.AlertType.ERROR, "Please draw something first")).showAndWait();
-		if (listOfPoints.getFirst() != listOfPoints.getLast())
-			bresenhamLine(listOfPoints.getFirst().getX(), listOfPoints.getFirst().getY(),
-						  listOfPoints.getLast().getX(), listOfPoints.getLast().getY());
-	}
+
 
 	@FXML
-	private void reflection(){
-		ensureDrawnPolygon();
+	private void doReflection(){
 		Alert choosePolygon = new Alert(Alert.AlertType.CONFIRMATION, "About which line do you want to reflect?");
 		try {
 			choosePolygon.getDialogPane().setContent(FXMLLoader.load(getClass().getResource("layouts/reflection.fxml")));
