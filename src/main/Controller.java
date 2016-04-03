@@ -15,7 +15,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
@@ -31,10 +30,6 @@ public class Controller  implements Initializable {
 	Pane Container;
 	@FXML
 	VBox myBox;
-	@FXML
-	RadioButton xAxis, yAxis, yEqualsX, yMinusX, customLine;
-	@FXML
-	TextField p1X, p1Y, p2X, p2Y;
 
     public static int AxisWidth, AxisHeight, XRange=8, YRange=6;
 
@@ -75,11 +70,10 @@ public class Controller  implements Initializable {
 		myCanvas.addEventFilter(MouseEvent.MOUSE_CLICKED, this::drawPolygon);
 	}
 
-	public static void staticExitAll(){
+	static void staticExitAll(){
 		(new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to exit?")).showAndWait()
 				.filter(response -> response == ButtonType.OK)
 				.ifPresent(response -> Platform.exit());
-
 	}
 
 	@FXML
@@ -117,44 +111,7 @@ public class Controller  implements Initializable {
 
 	@FXML
 	private void doReflection(){
-		Alert choosePolygon = new Alert(Alert.AlertType.CONFIRMATION, "About which line do you want to reflect?");
-		try {
-			choosePolygon.getDialogPane().setContent(FXMLLoader.load(getClass().getResource("layouts/reflection.fxml")));
-		}
-		catch (IOException e){
-			return;
-		}
-
-		choosePolygon.showAndWait()
-				.filter(response -> response == ButtonType.OK)
-				.ifPresent(response -> {
-
-					Point2D p1 = new Point2D(0,0);
-					Point2D p2 = new Point2D(0,0);
-
-					if (yAxis.isSelected()) {
-						p2 = new Point2D(0,100);
-					}
-					else if (xAxis.isSelected()) {
-						p2 = new Point2D(100,0);
-					}
-					else if (yEqualsX.isSelected()) {
-						p2 = new Point2D(100,100);
-					}
-					else if (yMinusX.isSelected()) {
-						p2 = new Point2D(100,-100);
-					}
-					else if (customLine.isSelected()){
-						p1 = new Point2D(Double.parseDouble(p1X.getText()),
-										 Double.parseDouble(p1Y.getText()));
-						p2 = new Point2D(Double.parseDouble(p2X.getText()),
-										 Double.parseDouble(p2Y.getText()));
-						System.out.println(p1X.getText()+"\n "+p1Y.getText()+"\n "+p2X.getText()+"\n "+p2Y.getText());
-					}
-					else return;
-
-					(new Transformation()).reflection(p1, p2);
-				});
+		new AlertBox("reflection", "Reflect About a Line", 266, 280);
 	}
 
 }
