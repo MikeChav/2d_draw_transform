@@ -34,15 +34,15 @@ public class Controller  implements Initializable {
 	@FXML
 	RadioButton xAxis, yAxis, yEqualsX, yMinusX, customLine;
 	@FXML
-	TextField customX, customY;
+	TextField p1X, p1Y, p2X, p2Y;
 
-    private int AxisWidth, AxisHeight, XRange=8, YRange=6;
+    public static int AxisWidth, AxisHeight, XRange=8, YRange=6;
 
 	public static GraphicsContext graphicsContext;
 
 	Point2D mouseLocation = null, prevMouseLocation = null;
 
-	LinkedList<Point2D> listOfPoints = new LinkedList<>();
+	public static LinkedList<Point2D> listOfPoints = new LinkedList<>();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -87,18 +87,6 @@ public class Controller  implements Initializable {
 		staticExitAll();
 	}
 
-	private Point2D translatePoint(Point2D point) {
-		return (new Point2D(translateX(point.getX()), translateY(point.getY())));
-	}
-
-	private double translateX(double x){
-		return ((x-(AxisWidth/2))/(AxisWidth/(2*XRange)));
-	}
-
-	private double translateY(double y){
-		return (((AxisHeight/2) - y)/(AxisHeight/(2*YRange)));
-	}
-
 	private List<Point2D> drawPolygon(MouseEvent e){
 		if (mouseLocation == null && prevMouseLocation == null)
 			listOfPoints = new LinkedList<>();
@@ -106,7 +94,7 @@ public class Controller  implements Initializable {
 		if (mouseLocation != null)
 			prevMouseLocation = mouseLocation;
 		mouseLocation = new Point2D(e.getX(), e.getY());
-		Point2D newPoint = translatePoint(mouseLocation);
+		Point2D newPoint = Commons.translatePoint(mouseLocation);
 
 		System.out.println("Translated: ("+newPoint.getX()+", "+newPoint.getY()+")");
 
@@ -127,9 +115,6 @@ public class Controller  implements Initializable {
 		return listOfPoints;
 	}
 
-	/**To be added before transforming or filling**/
-
-
 	@FXML
 	private void doReflection(){
 		Alert choosePolygon = new Alert(Alert.AlertType.CONFIRMATION, "About which line do you want to reflect?");
@@ -143,23 +128,33 @@ public class Controller  implements Initializable {
 		choosePolygon.showAndWait()
 				.filter(response -> response == ButtonType.OK)
 				.ifPresent(response -> {
-					if (yAxis.isSelected()) {
 
+					Point2D p1 = new Point2D(0,0);
+					Point2D p2 = new Point2D(0,0);
+
+					if (yAxis.isSelected()) {
+						p2 = new Point2D(0,100);
 					}
 					else if (xAxis.isSelected()) {
-
+						p2 = new Point2D(100,0);
 					}
 					else if (yEqualsX.isSelected()) {
-
+						p2 = new Point2D(100,100);
 					}
 					else if (yMinusX.isSelected()) {
-
+						p2 = new Point2D(100,-100);
 					}
-					else {
-
+					else if (customLine.isSelected()){
+						p1 = new Point2D(Double.parseDouble(p1X.getText()),
+										 Double.parseDouble(p1Y.getText()));
+						p2 = new Point2D(Double.parseDouble(p2X.getText()),
+										 Double.parseDouble(p2Y.getText()));
+						System.out.println(p1X.getText()+"\n "+p1Y.getText()+"\n "+p2X.getText()+"\n "+p2Y.getText());
 					}
+					else return;
+
+					(new Transformation()).reflection(p1, p2);
 				});
-
 	}
 
 }

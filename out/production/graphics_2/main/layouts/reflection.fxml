@@ -4,11 +4,12 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
       <RadioButton layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="X-Axis" fx:id="xAxis">
          <toggleGroup>
             <ToggleGroup fx:id="ReflectionType" />
@@ -42,15 +43,20 @@
          </VBox.margin></RadioButton>
       <RadioButton fx:id="customLine" layoutX="10.0" layoutY="28.0" mnemonicParsing="false" toggleGroup="$ReflectionType">
          <graphic>
-            <HBox>
-               <children>
-                  <TextField fx:id="customX" prefHeight="26.0" prefWidth="66.0" promptText="X=">
-                     <HBox.margin>
-                        <Insets right="5.0" />
-                     </HBox.margin></TextField>
-                  <TextField fx:id="customY" prefHeight="26.0" prefWidth="66.0" promptText="Y=" />
-               </children>
-            </HBox>
+            <GridPane>
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                </rowConstraints>
+                <TextField fx:id="p1X" prefHeight="26.0" prefWidth="66.0" promptText="X1=" />
+                <TextField fx:id="p1Y" prefHeight="26.0" prefWidth="66.0" promptText="Y1=" GridPane.columnIndex="1" />
+                <TextField fx:id="p2X" prefHeight="26.0" prefWidth="66.0" promptText="X2=" GridPane.rowIndex="1" />
+                <TextField fx:id="p2Y" prefHeight="26.0" prefWidth="66.0" promptText="Y2=" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            </GridPane>
          </graphic>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -58,5 +64,4 @@
          <VBox.margin>
             <Insets left="10.0" />
          </VBox.margin></RadioButton>
-   </children>
 </VBox>

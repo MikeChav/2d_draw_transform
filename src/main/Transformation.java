@@ -18,11 +18,9 @@ public class Transformation {
 
 	LinkedList<Point2D> listOfPoints;
 
-	public Transformation(LinkedList<Point2D> listOfPoints){
-		this.listOfPoints = listOfPoints;
+	public Transformation(){
+		this.listOfPoints = Controller.listOfPoints;
 	}
-
-
 
 	private void ensureDrawnPolygon(){
 		if (listOfPoints.isEmpty())
@@ -32,9 +30,8 @@ public class Transformation {
 					listOfPoints.getLast().getX(), listOfPoints.getLast().getY());
 	}
 
-	public void reflection(double m, double c) {
+	public void reflection(Point2D p1, Point2D p2) {
 		ensureDrawnPolygon();
-
 
 	}
 

@@ -1,5 +1,7 @@
 package main;
 
+import javafx.geometry.Point2D;
+
 /**
  * Created by michael on 4/3/16.
  *
@@ -22,6 +24,18 @@ public class Commons{
 	public static void initSize() {
 		height = javafx.stage.Screen.getPrimary().getVisualBounds().getHeight();
 		width = javafx.stage.Screen.getPrimary().getVisualBounds().getWidth();
+	}
+
+	public static Point2D translatePoint(Point2D point) {
+		return (new Point2D(translateX(point.getX()), translateY(point.getY())));
+	}
+
+	public static double translateX(double x){
+		return ((x-(Controller.AxisWidth/2))/(Controller.AxisWidth/(2*Controller.XRange)));
+	}
+
+	public static double translateY(double y){
+		return (((Controller.AxisHeight/2) - y)/(Controller.AxisHeight/(2*Controller.YRange)));
 	}
 
 	public static void bresenhamLine(double x0, double y0, double x1, double y1) {
