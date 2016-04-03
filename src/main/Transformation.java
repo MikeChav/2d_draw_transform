@@ -38,40 +38,31 @@ public class Transformation {
 		ensureDrawnPolygon();
 	}
 
-	public void Rotation(double angledegree,int x,int y){
+	public void Rotation(double angledegree, int x, int y){
 
 		ensureDrawnPolygon();
-
 		double angle = Math.PI*(angledegree/180.0);
-
 		double[][] RotationMatrix = {{Math.cos(angle), Math.sin(angle)}, {-Math.sin(angle), Math.cos(angle)}};
+		transformMe(RotationMatrix, x, y);
 
-		Point2D[] PointsResult = new Point2D[listOfPoints.size()];
-
-		for(int z=0;z<listOfPoints.size();z++){
-
-			Point2D translatedPoint = Commons.translatePoint(listOfPoints.get(z));
-			double xc =  ((translatedPoint.getX()-x)*RotationMatrix[0][0])+((translatedPoint.getY()-y)*RotationMatrix[0][1]);
-			double yc = ((translatedPoint.getX()-x)*RotationMatrix[1][0])+((translatedPoint.getY()-y)*RotationMatrix[1][1]);
-
-			PointsResult[z] =(Commons.translatebackPoint(new Point2D(xc,yc)));
-		}
-		Commons.Draw(PointsResult);
 	}
 
-	public void Scaling(int ScaleX,int ScaleY,int x,int y){
+	public void Scaling(double ScaleX, double ScaleY, int x, int y){
 
 		ensureDrawnPolygon();
+		double[][] ScalingMatrix = {{ScaleX,0},{0,ScaleY}};
+		transformMe(ScalingMatrix, x, y);
 
-		int[][] ScalingMatrix = {{ScaleX,0},{0,ScaleY}};
+	}
 
+	private void transformMe(double[][] matrix, int x, int y) {
 		Point2D[] PointsResult = new Point2D[listOfPoints.size()];
 
 		for(int z=0;z<listOfPoints.size();z++){
 
 			Point2D translatedPoint = Commons.translatePoint(listOfPoints.get(z));
-			double xc =  ((translatedPoint.getX()-x)*ScalingMatrix[0][0])+((translatedPoint.getY()-y)*ScalingMatrix[0][1]);
-			double yc = ((translatedPoint.getX()-x)*ScalingMatrix[1][0])+((translatedPoint.getY()-y)*ScalingMatrix[1][1]);
+			double xc =  ((translatedPoint.getX()-x)*matrix[0][0])+((translatedPoint.getY()-y)*matrix[0][1]);
+			double yc = ((translatedPoint.getX()-x)*matrix[1][0])+((translatedPoint.getY()-y)*matrix[1][1]);
 
 			PointsResult[z] =(Commons.translatebackPoint(new Point2D(xc,yc)));
 		}
