@@ -11,10 +11,8 @@
     <MenuBar fx:id="menuBar">
         <Menu mnemonicParsing="false" text="Transform">
             <MenuItem mnemonicParsing="false" text="Translation" />
-            <MenuItem mnemonicParsing="false" text="Normal Rotation" />
-            <MenuItem mnemonicParsing="false" text="Rotation About a Fixed Point" />
-            <MenuItem mnemonicParsing="false" text="Normal Scaling" />
-            <MenuItem mnemonicParsing="false" text="Scaling About a Fixed Point" />
+            <MenuItem mnemonicParsing="false" text="Normal Rotation" onAction="#doRotation"  />
+            <MenuItem mnemonicParsing="false" text="Normal Scaling" onAction="#doScaling" />
             <MenuItem mnemonicParsing="false" text="Shear" />
             <MenuItem mnemonicParsing="false" text="Reflection" onAction="#doReflection" />
         </Menu>
