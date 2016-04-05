@@ -13,7 +13,7 @@
             <MenuItem mnemonicParsing="false" text="Translation" />
             <MenuItem mnemonicParsing="false" text="Normal Rotation" onAction="#doRotation"  />
             <MenuItem mnemonicParsing="false" text="Normal Scaling" onAction="#doScaling" />
-            <MenuItem mnemonicParsing="false" text="Shear" />
+            <MenuItem mnemonicParsing="false" text="Shear" onAction="#doShear" />
             <MenuItem mnemonicParsing="false" text="Reflection" onAction="#doReflection" />
         </Menu>
         <Menu mnemonicParsing="false" text="Fill">

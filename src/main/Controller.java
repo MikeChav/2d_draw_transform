@@ -122,4 +122,8 @@ public class Controller  implements Initializable {
 		new AlertBox("scaling","",266,280);
 	}
 
+	@FXML
+	private void doShear(){new AlertBox("Shear","",266,280);
+	}
+
 }
