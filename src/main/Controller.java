@@ -23,6 +23,7 @@ public class Controller  implements Initializable {
 
 	@FXML
 	MenuBar menuBar;
+	@FXML
 	public static Canvas myCanvas;
 	@FXML
 	Pane Container;
@@ -123,7 +124,22 @@ public class Controller  implements Initializable {
 	}
 
 	@FXML
-	private void doShear(){new AlertBox("Shear","",266,280);
+	private void doShear(){
+		new AlertBox("shear","",266,280);
 	}
 
+	@FXML
+	private void doFloodFill(){
+		new AlertBox("floodfill", "", 208, 151);
+	}
+
+	@FXML
+	private void doBoundaryFill(){
+		new AlertBox("boundaryfill", "", 236, 151);
+	}
+
+	@FXML
+	private void doScanFill(){
+		new AlertBox("scanfill", "", 216, 151);
+	}
 }
