@@ -3,7 +3,6 @@ package main;
 import javafx.geometry.Point2D;
 import javafx.scene.control.Alert;
 
-import java.lang.reflect.Array;
 import java.util.LinkedList;
 
 /**
@@ -49,13 +48,13 @@ public class Transformation {
 				break;
 			case 'p' :
 				ReflectionMatrix[0][0] = 0;
-				ReflectionMatrix[0][0] = 1;
+				ReflectionMatrix[0][1] = 1;
 				ReflectionMatrix[1][0] = 1;
 				ReflectionMatrix[1][1] = 0;
 				break;
 			case 'n' :
 				ReflectionMatrix[0][0] = 0;
-				ReflectionMatrix[0][0] = -1;
+				ReflectionMatrix[0][1] = -1;
 				ReflectionMatrix[1][0] = -1;
 				ReflectionMatrix[1][1] = 0;
 				break;
@@ -63,8 +62,7 @@ public class Transformation {
 				new Alert(Alert.AlertType.ERROR, "We're sorry, an error has occurred");
 				break;
 		}
-		//TODO: complete the call here
-	//	transformMe(ReflectionMatrix, );
+		transformMe(ReflectionMatrix, 0, 0);
 	}
 
 	public void Rotation(double angledegree, int x, int y){

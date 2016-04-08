@@ -1,10 +1,11 @@
 Transformations:
 
 i) Translation -> ?
-vii) Reflections -> Michael
 
 Filling Algos
 
 i) flood fill algorithm -> Michael
 ii) boundary fill approach- 8-connected -> Michael
 iii) scan line algorithm -> Tanooj
+
+AutoScaling?!? Seems easy though

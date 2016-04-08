@@ -38,9 +38,6 @@ public class Controller  implements Initializable {
 
     public static int AxisWidth, AxisHeight, XRange=8, YRange=6;
 
-	@FXML
-	private GraphicsContext graphicsContext;
-
 	public static GraphicsContext staticGraphicsContext;
 
 	Point2D mouseLocation = null, prevMouseLocation = null;
@@ -50,8 +47,7 @@ public class Controller  implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		staticContainer = container;
-		graphicsContext = myCanvas.getGraphicsContext2D();
-		staticGraphicsContext = graphicsContext;
+		staticGraphicsContext = myCanvas.getGraphicsContext2D();
 		staticMyCanvas = myCanvas;
 
 		staticMyCanvas.setHeight(Commons.getHeight() - menuBar.getHeight());

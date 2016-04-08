@@ -2,7 +2,6 @@ package main;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Point2D;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 
@@ -18,7 +17,7 @@ public class ReflectionController {
 	@FXML
 	TextField p1X, p1Y, p2X, p2Y;
 
-	public void getPoints() {
+	public void getPoints(ActionEvent e) {
 		char reflectionType;
 
 		if (yAxis.isSelected())
@@ -34,6 +33,8 @@ public class ReflectionController {
 		else return;
 
 		(new Transformation()).reflection(reflectionType);
+
+		doNothing(e);
 	}
 
 	@FXML
