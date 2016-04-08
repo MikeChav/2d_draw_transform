@@ -49,7 +49,7 @@ public class AlertBox{
 	}
 
 	@FXML
-	public static void chooseNo(ActionEvent actionEvent) {
+	public static void closeAlertBox(ActionEvent actionEvent) {
 		((Node) (actionEvent.getSource())).getScene().getWindow().hide();
 	}
 }

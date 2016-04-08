@@ -36,7 +36,7 @@
       </ColorPicker>
       <HBox>
          <children>
-            <Button mnemonicParsing="false" prefWidth="63.0" text="Ok">
+            <Button mnemonicParsing="false" prefWidth="63.0" text="Ok" onAction="#doFloodFill">
                <HBox.margin>
                   <Insets bottom="10.0" left="30.0" top="10.0" />
                </HBox.margin>

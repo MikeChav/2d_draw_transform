@@ -34,8 +34,37 @@ public class Transformation {
 
 	}
 
-	public void reflection(Point2D p1, Point2D p2) {
+	public void reflection(char type) {
 		ensureDrawnPolygon();
+		double [][] ReflectionMatrix ={{1, 0, 0}, {0, -1, 0}, {0, 0, 1}};
+		switch(type){
+			case 'x' :
+				break;
+			case 'y' :
+				ReflectionMatrix[0][0] = -1;
+				ReflectionMatrix[1][1] = 1;
+				break;
+			case 'b' :
+				ReflectionMatrix[0][0] = -1;
+				break;
+			case 'p' :
+				ReflectionMatrix[0][0] = 0;
+				ReflectionMatrix[0][0] = 1;
+				ReflectionMatrix[1][0] = 1;
+				ReflectionMatrix[1][1] = 0;
+				break;
+			case 'n' :
+				ReflectionMatrix[0][0] = 0;
+				ReflectionMatrix[0][0] = -1;
+				ReflectionMatrix[1][0] = -1;
+				ReflectionMatrix[1][1] = 0;
+				break;
+			default:
+				new Alert(Alert.AlertType.ERROR, "We're sorry, an error has occurred");
+				break;
+		}
+		//TODO: complete the call here
+	//	transformMe(ReflectionMatrix, );
 	}
 
 	public void Rotation(double angledegree, int x, int y){

@@ -1,11 +1,6 @@
 package main;
 
 import javafx.geometry.Point2D;
-import javafx.scene.paint.Color;
-
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
-import java.util.List;
 
 /**
  * Created by michael on 4/3/16.
@@ -62,7 +57,7 @@ public class Commons{
 		double err = dx+dy, e2; /* error value e_xy */
 
 		while(true){
-			Controller.graphicsContext.strokeLine(x0, y0, x0, y0);
+			Controller.staticGraphicsContext.strokeLine(x0, y0, x0, y0);
 
 			if (x0==x1 && y0==y1)
 				break;

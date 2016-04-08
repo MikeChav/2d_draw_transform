@@ -1,13 +1,10 @@
 Transformations:
 
 i) Translation -> ?
-iv) Normal Scaling -> Varun
-v) Scaling about a Fixed Point -> Varun
-vi) Shear -> Michael
 vii) Reflections -> Michael
 
 Filling Algos
 
-i) flood fill algorithm -> Varun
+i) flood fill algorithm -> Michael
 ii) boundary fill approach- 8-connected -> Michael
 iii) scan line algorithm -> Tanooj

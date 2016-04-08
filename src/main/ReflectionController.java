@@ -14,36 +14,31 @@ import javafx.scene.control.TextField;
 public class ReflectionController {
 
 	@FXML
-	RadioButton xAxis, yAxis, yEqualsX, yMinusX, customLine;
+	RadioButton xAxis, yAxis, yEqualsX, yMinusX, xyAxis;
 	@FXML
 	TextField p1X, p1Y, p2X, p2Y;
 
 	public void getPoints() {
-		Point2D p1 = new Point2D(0,0);
-		Point2D p2;
+		char reflectionType;
 
 		if (yAxis.isSelected())
-			p2 = new Point2D(0,100);
+			reflectionType = 'y';
 		else if (xAxis.isSelected())
-			p2 = new Point2D(100,0);
+			reflectionType = 'x';
 		else if (yEqualsX.isSelected())
-			p2 = new Point2D(100,100);
+			reflectionType = 'p';
 		else if (yMinusX.isSelected())
-			p2 = new Point2D(100,-100);
-		else if (customLine.isSelected()){
-			p1 = new Point2D(Double.parseDouble(p1X.getText()),
-							 Double.parseDouble(p1Y.getText()));
-			p2 = new Point2D(Double.parseDouble(p2X.getText()),
-							 Double.parseDouble(p2Y.getText()));
-		}
+			reflectionType = 'n';
+		else if (xyAxis.isSelected())
+			reflectionType = 'b';
 		else return;
 
-		(new Transformation()).reflection(p1, p2);
+		(new Transformation()).reflection(reflectionType);
 	}
 
 	@FXML
 	public void doNothing(ActionEvent e) {
-		AlertBox.chooseNo(e);
+		AlertBox.closeAlertBox(e);
 	}
 
 }

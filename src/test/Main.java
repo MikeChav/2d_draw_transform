@@ -30,7 +30,7 @@
 //	static Random random = new Random();
 //
 //	Canvas canvas;
-//	GraphicsContext graphicsContext;
+//	GraphicsContext staticGraphicsContext;
 //
 //	AnimationTimer loop;
 //
@@ -53,7 +53,7 @@
 //
 //		canvas = new Canvas( SCENE_WIDTH, SCENE_HEIGHT);
 //
-//		graphicsContext = canvas.getGraphicsContext2D();
+//		staticGraphicsContext = canvas.getGraphicsContext2D();
 //
 //		Pane layerPane = new Pane();
 //
@@ -83,7 +83,7 @@
 //				if( mousePressed) {
 //
 //					// try this
-//					// graphicsContext.drawImage( brush, mouseLocation.getX() - brushWidthHalf, mouseLocation.getY() - brushHeightHalf);
+//					// staticGraphicsContext.drawImage( brush, mouseLocation.getX() - brushWidthHalf, mouseLocation.getY() - brushHeightHalf);
 //
 //					// then this
 //					bresenhamLine( prevMouseLocation.getX(), prevMouseLocation.getY(), mouseLocation.getX(), mouseLocation.getY());

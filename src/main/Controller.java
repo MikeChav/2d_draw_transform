@@ -23,16 +23,25 @@ public class Controller  implements Initializable {
 
 	@FXML
 	MenuBar menuBar;
+
 	@FXML
-	public static Canvas myCanvas;
+	private Canvas myCanvas;
+
+	public static Canvas staticMyCanvas;
+
 	@FXML
-	Pane Container;
+	private Pane container;
+	private static Pane staticContainer;
+
 	@FXML
 	VBox myBox;
 
     public static int AxisWidth, AxisHeight, XRange=8, YRange=6;
 
-	public static GraphicsContext graphicsContext;
+	@FXML
+	private GraphicsContext graphicsContext;
+
+	public static GraphicsContext staticGraphicsContext;
 
 	Point2D mouseLocation = null, prevMouseLocation = null;
 
@@ -40,33 +49,26 @@ public class Controller  implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+		staticContainer = container;
 		graphicsContext = myCanvas.getGraphicsContext2D();
+		staticGraphicsContext = graphicsContext;
+		staticMyCanvas = myCanvas;
 
-		myCanvas.setHeight(Commons.getHeight() - menuBar.getHeight());
-		myCanvas.setWidth(Commons.getWidth());
+		staticMyCanvas.setHeight(Commons.getHeight() - menuBar.getHeight());
+		staticMyCanvas.setWidth(Commons.getWidth());
 
-		AxisWidth = (int) myCanvas.getWidth();
-        AxisHeight = (int) myCanvas.getHeight();
+		AxisWidth = (int) staticMyCanvas.getWidth();
+        AxisHeight = (int) staticMyCanvas.getHeight();
 
-        Axes axes = new Axes(
-                AxisWidth, AxisHeight,
-                -XRange, XRange, 1,
-                -YRange, YRange,1
-        );
+		setScales(XRange, YRange);
 
-        StackPane layout = new StackPane(axes);
-        layout.setStyle("-fx-background-color: slategrey");
-        Canvas v  = (Canvas)Container.getChildren().get(0);
-        Container.getChildren().clear();
-        Container.getChildren().addAll(layout,v);
 
-		graphicsContext.setFill(Color.TRANSPARENT);
-		graphicsContext.fillRect(0, 0, myCanvas.getWidth(), myCanvas.getHeight());
-		graphicsContext.setStroke(Color.WHITE);
-		graphicsContext.setLineWidth(1.0);
+		staticGraphicsContext.setFill(Color.TRANSPARENT);
+		staticGraphicsContext.fillRect(0, 0, staticMyCanvas.getWidth(), staticMyCanvas.getHeight());
+		staticGraphicsContext.setStroke(Color.WHITE);
+		staticGraphicsContext.setLineWidth(1.0);
 
-		myCanvas.addEventFilter(MouseEvent.MOUSE_CLICKED, this::drawPolygon);
+		staticMyCanvas.addEventFilter(MouseEvent.MOUSE_CLICKED, this::drawPolygon);
 	}
 
 	static void staticExitAll(){
@@ -108,6 +110,30 @@ public class Controller  implements Initializable {
 		return listOfPoints;
 	}
 
+	public static void setScales(int maxX, int maxY) {
+		Axes axes = new Axes(
+				AxisWidth, AxisHeight,
+				-maxX, maxX, 1,
+				-maxY, maxY,1
+		);
+
+		StackPane layout = new StackPane(axes);
+		layout.setStyle("-fx-background-color: slategrey");
+		Canvas v;
+		try {
+			v  = (Canvas) getContainer().getChildren().get(1);
+		}
+		catch (IndexOutOfBoundsException e) {
+			v  = (Canvas) getContainer().getChildren().get(0);
+		}
+		getContainer().getChildren().clear();
+		getContainer().getChildren().addAll(layout, v);
+	}
+
+	public static Pane getContainer() {
+		return staticContainer;
+	}
+
 	@FXML
 	private void doReflection(){
 		new AlertBox("reflection", "Reflect About a Line", 266, 280);
@@ -141,5 +167,10 @@ public class Controller  implements Initializable {
 	@FXML
 	private void doScanFill(){
 		new AlertBox("scanfill", "", 216, 151);
+	}
+
+	@FXML
+	private void changeScale() {
+		new AlertBox("changescale", "", 337, 124);
 	}
 }

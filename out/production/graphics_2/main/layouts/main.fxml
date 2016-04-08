@@ -9,24 +9,25 @@
 
 <VBox fx:id="myBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller">
     <MenuBar fx:id="menuBar">
+        <Menu mnemonicParsing="false" text="Operations">
+            <MenuItem mnemonicParsing="false" onAction="#changeScale" text="Change Scale" />
+            <MenuItem mnemonicParsing="false" onAction="#exitAll" text="Exit" />
+        </Menu>
         <Menu mnemonicParsing="false" text="Transform">
             <MenuItem mnemonicParsing="false" text="Translation" />
             <MenuItem mnemonicParsing="false" text="Normal Rotation" onAction="#doRotation"  />
             <MenuItem mnemonicParsing="false" text="Normal Scaling" onAction="#doScaling" />
-            <MenuItem mnemonicParsing="false" text="Shear" />
+            <MenuItem mnemonicParsing="false" text="Shear" onAction="#doShear" />
             <MenuItem mnemonicParsing="false" text="Reflection" onAction="#doReflection" />
         </Menu>
         <Menu mnemonicParsing="false" text="Fill">
-            <MenuItem mnemonicParsing="false" text="Flood Fill" />
-            <MenuItem mnemonicParsing="false" text="Boundary Fill Approach - 8-connected" />
-            <MenuItem mnemonicParsing="false" text="Scan Line" />
-        </Menu>
-        <Menu mnemonicParsing="false" text="Exit">
-            <MenuItem mnemonicParsing="false" onAction="#exitAll" text="Exit" />
+            <MenuItem mnemonicParsing="false" text="Flood Fill" onAction="#doFloodFill"/>
+            <MenuItem mnemonicParsing="false" text="Boundary Fill Approach - 8-connected" onAction="#doBoundaryFill"/>
+            <MenuItem mnemonicParsing="false" text="Scan Line" onAction="#doScanFill"/>
         </Menu>
     </MenuBar>
 
-    <Pane fx:id="Container">
+    <Pane fx:id="container">
         <Canvas fx:id="myCanvas" height="700" width="1276"/>
     </Pane>
 
