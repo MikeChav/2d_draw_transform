@@ -27,7 +27,7 @@ public class Controller  implements Initializable {
 	@FXML
 	private Canvas myCanvas;
 
-	public static Canvas staticMyCanvas;
+	static Canvas staticMyCanvas;
 
 	@FXML
 	private Pane container;
@@ -36,13 +36,13 @@ public class Controller  implements Initializable {
 	@FXML
 	VBox myBox;
 
-    public static int AxisWidth, AxisHeight, XRange=8, YRange=6;
+    static int AxisWidth, AxisHeight, XRange=8, YRange=6;
 
-	public static GraphicsContext staticGraphicsContext;
+	static GraphicsContext staticGraphicsContext;
 
-	Point2D mouseLocation = null, prevMouseLocation = null;
+	private Point2D mouseLocation = null, prevMouseLocation = null;
 
-	public static LinkedList<Point2D> listOfPoints = new LinkedList<>();
+	static LinkedList<Point2D> listOfPoints = new LinkedList<>();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -106,7 +106,7 @@ public class Controller  implements Initializable {
 		return listOfPoints;
 	}
 
-	public static void setScales(int maxX, int maxY) {
+	static void setScales(int maxX, int maxY) {
 		Axes axes = new Axes(
 				AxisWidth, AxisHeight,
 				-maxX, maxX, 1,
@@ -126,8 +126,13 @@ public class Controller  implements Initializable {
 		getContainer().getChildren().addAll(layout, v);
 	}
 
-	public static Pane getContainer() {
+	private static Pane getContainer() {
 		return staticContainer;
+	}
+
+	@FXML
+	private void doTranslation(){
+		new AlertBox("translation", "How to translate", 315, 99);
 	}
 
 	@FXML

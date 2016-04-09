@@ -10,31 +10,45 @@ import java.util.LinkedList;
  *
  * Holds methods for each transformation.
  * Call:
- *  (new Transformation(listofPoints)).<transformation>(<parameters>)
+ *  (new Transformation()).<transformation>(<parameters>)
  *
  */
-public class Transformation {
+class Transformation {
 
-	LinkedList<Point2D> listOfPoints;
+	private LinkedList<Point2D> listOfPoints;
 
 
-	public Transformation(){
+	Transformation(){
 		this.listOfPoints = Controller.listOfPoints;
 	}
 
-	private void ensureDrawnPolygon(){
-		if (listOfPoints.isEmpty())
+	private boolean ensureDrawnPolygon(){
+		if (listOfPoints.isEmpty()) {
 			(new Alert(Alert.AlertType.ERROR, "Please draw something first")).showAndWait();
+			return false;
+		}
+		else if (listOfPoints.size() < 3) {
+			(new Alert(Alert.AlertType.ERROR, "Polygons need at least 3 vertices")).showAndWait();
+			return false;
+		}
 		if (listOfPoints.getFirst() != listOfPoints.getLast())
 			Commons.bresenhamLine(listOfPoints.getFirst().getX(), listOfPoints.getFirst().getY(),
 					listOfPoints.getLast().getX(), listOfPoints.getLast().getY());
-		if (listOfPoints.size() < 3)
-			(new Alert(Alert.AlertType.ERROR, "Polygons need at least 3 vertices")).showAndWait();
-
+		return true;
 	}
 
-	public void reflection(char type) {
-		ensureDrawnPolygon();
+	void translation(double tx, double ty) {
+		if (! ensureDrawnPolygon())
+			return;
+
+		double[][] TranslationMatrix = {{1, 0, tx}, { 0, 1, ty}, {0, 0, 1}};
+
+		transformMe(TranslationMatrix, 0, 0);
+	}
+
+	void reflection(char type) {
+		if (! ensureDrawnPolygon())
+			return;
 		double [][] ReflectionMatrix ={{1, 0, 0}, {0, -1, 0}, {0, 0, 1}};
 		switch(type){
 			case 'x' :
@@ -65,26 +79,27 @@ public class Transformation {
 		transformMe(ReflectionMatrix, 0, 0);
 	}
 
-	public void Rotation(double angledegree, int x, int y){
-
-		ensureDrawnPolygon();
-		double angle = Math.PI*(angledegree/180.0);
+	void Rotation(double angleDegree, int x, int y){
+		if (! ensureDrawnPolygon())
+			return;
+		double angle = Math.PI*(angleDegree/180.0);
 		double[][] RotationMatrix = {{Math.cos(angle), Math.sin(angle)}, {-Math.sin(angle), Math.cos(angle)}};
 		transformMe(RotationMatrix, x, y);
 
 	}
 
-	public void Scaling(double ScaleX, double ScaleY, int x, int y){
-
-		ensureDrawnPolygon();
+	void Scaling(double ScaleX, double ScaleY, int x, int y){
+		if (! ensureDrawnPolygon())
+			return;
 		double[][] ScalingMatrix = {{ScaleX,0},{0,ScaleY}};
 		transformMe(ScalingMatrix, x, y);
 
 	}
 
-	public void Shear(double ShX,double ShY,double refX,double refY){
+	void Shear(double ShX, double ShY, double refX, double refY){
+		if (! ensureDrawnPolygon())
+			return;
 
-		ensureDrawnPolygon();
 		double[][] ShearMatrix = {{1,ShX,-ShX*refY},{ShY,1,-ShY*refX},{0,0,1}};
 		transformMe(ShearMatrix,0,0);
 
@@ -112,7 +127,4 @@ public class Transformation {
 		}
 		Commons.Draw(PointsResult);
 	}
-
-
-
 }
