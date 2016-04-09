@@ -41,7 +41,7 @@
                         <Insets bottom="10.0" left="42.0" top="10.0" />
                     </HBox.margin>
                 </Button>
-                <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Cancel">
+                <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Cancel" onAction="#closeMe">
                     <HBox.margin>
                         <Insets bottom="10.0" left="15.0" top="10.0" />
                     </HBox.margin>

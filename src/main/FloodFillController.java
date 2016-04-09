@@ -1,5 +1,7 @@
 package main;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.paint.Color;
 
 /**
@@ -14,5 +16,8 @@ public class FloodFillController {
 		ColorFill.flood(mark, 1,2, Color.BLUE);
 	}
 
-
+	@FXML
+	private void closeMe (ActionEvent e){
+		AlertBox.closeAlertBox(e);
+	}
 }

@@ -20,11 +20,6 @@
             <MenuItem mnemonicParsing="false" text="Shear" onAction="#doShear" />
             <MenuItem mnemonicParsing="false" text="Reflection" onAction="#doReflection" />
         </Menu>
-        <Menu mnemonicParsing="false" text="Fill">
-            <MenuItem mnemonicParsing="false" text="Flood Fill" onAction="#doFloodFill"/>
-            <MenuItem mnemonicParsing="false" text="Boundary Fill Approach - 8-connected" onAction="#doBoundaryFill"/>
-            <MenuItem mnemonicParsing="false" text="Scan Line" onAction="#doScanFill"/>
-        </Menu>
     </MenuBar>
 
     <Pane fx:id="container">

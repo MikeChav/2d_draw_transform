@@ -8,6 +8,7 @@ import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -58,13 +59,32 @@ public class Controller  implements Initializable {
 
 		setScales(XRange, YRange);
 
+		final ContextMenu contextMenu = new ContextMenu();
+
+
+		MenuItem item1 = new MenuItem("Flood Fill");
+		item1.setOnAction(e-> doFloodFill());
+		MenuItem item2 = new MenuItem("Boundary Fill");
+		item2.setOnAction(e-> doBoundaryFill());
+		MenuItem item3 = new MenuItem("Scan Line");
+		item3.setOnAction(e-> doScanFill());
+		contextMenu.getItems().addAll(item1, item2, item3);
+
 
 		staticGraphicsContext.setFill(Color.TRANSPARENT);
 		staticGraphicsContext.fillRect(0, 0, staticMyCanvas.getWidth(), staticMyCanvas.getHeight());
 		staticGraphicsContext.setStroke(Color.WHITE);
 		staticGraphicsContext.setLineWidth(1.0);
 
-		staticMyCanvas.addEventFilter(MouseEvent.MOUSE_CLICKED, this::drawPolygon);
+		staticMyCanvas.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
+				if (e.getButton() == MouseButton.SECONDARY) {
+					Commons.startPoint = Commons.translatePoint(new Point2D(e.getX(), e.getY()));
+					contextMenu.show(staticMyCanvas, e.getScreenX(), e.getScreenY());
+				}
+				else
+					drawPolygon(e);
+			}
+		);
 	}
 
 	static void staticExitAll(){

@@ -13,6 +13,8 @@ public class Commons{
 	private static double height;
 	private static double width;
 
+	public static Point2D startPoint;
+
 	public static double getHeight() {
 		return height;
 	}
