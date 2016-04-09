@@ -114,13 +114,13 @@ class Transformation {
 
 			Point2D translatedPoint = Commons.translatePoint(listOfPoints.get(z));
 			if(matrix.length>2) {
-				xc = ((translatedPoint.getX() - x) * matrix[0][0]) + ((translatedPoint.getY() - y) * matrix[0][1]) + (1 * matrix[0][2]);
-				yc = ((translatedPoint.getX() - x) * matrix[1][0]) + ((translatedPoint.getY() - y) * matrix[1][1]) + (1 * matrix[1][2]);
+				xc = ((translatedPoint.getX() - x) * matrix[0][0]) + ((translatedPoint.getY() - y) * matrix[0][1]) + (1 * matrix[0][2])+x;
+				yc = ((translatedPoint.getX() - x) * matrix[1][0]) + ((translatedPoint.getY() - y) * matrix[1][1]) + (1 * matrix[1][2])+y;
 			}
 			else
 			{
-				xc = ((translatedPoint.getX() - x) * matrix[0][0]) + ((translatedPoint.getY() - y) * matrix[0][1]) ;
-				yc = ((translatedPoint.getX() - x) * matrix[1][0]) + ((translatedPoint.getY() - y) * matrix[1][1]);
+				xc = ((translatedPoint.getX() - x) * matrix[0][0]) + ((translatedPoint.getY() - y) * matrix[0][1])+x ;
+				yc = ((translatedPoint.getX() - x) * matrix[1][0]) + ((translatedPoint.getY() - y) * matrix[1][1])+y;
 			}
 
 			PointsResult[z] =(Commons.translatebackPoint(new Point2D(xc,yc)));
