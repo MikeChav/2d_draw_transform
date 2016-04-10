@@ -16,6 +16,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -38,6 +39,11 @@ public class Controller  implements Initializable {
 	VBox myBox;
 
     static int AxisWidth, AxisHeight, XRange=8, YRange=6;
+
+	static double ymin=100000,ymax=0;
+
+	static ArrayList<Point2D> pointsOfScanline = new ArrayList<>();
+
 
 	static GraphicsContext staticGraphicsContext;
 
@@ -103,6 +109,12 @@ public class Controller  implements Initializable {
 		if (mouseLocation != null)
 			prevMouseLocation = mouseLocation;
 		mouseLocation = new Point2D(e.getX(), e.getY());
+
+		if(e.getY()>ymax)
+			ymax=e.getY();
+		if(e.getY()<ymin)
+			ymin=e.getY();
+
 
 		Commons.listOfPoints.add(mouseLocation);
 		if (Commons.listOfPoints.size() == 1)
