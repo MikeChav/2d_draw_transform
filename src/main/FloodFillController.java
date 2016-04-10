@@ -2,9 +2,7 @@ package main;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Point2D;
 import javafx.scene.control.ColorPicker;
-import javafx.scene.paint.Color;
 
 /**
  * Created by michael on 4/4/16.
