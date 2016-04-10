@@ -1,43 +1,59 @@
 package main;
 
+import javafx.geometry.Point2D;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * Created by michael on 4/4/16.
+ *
+ * This class takes data from fill controllers and launches the right algorithms
  */
 public class ColorFill {
 
-	public static void flood(boolean[][] mark, int row, int col, Color tgtColor) {
-		// make sure row and col are inside the image
-		if (row < 0) return;
-		if (col < 0) return;
-		if (row >= Controller.staticMyCanvas.getHeight()) return;
-		if (col >= Controller.staticMyCanvas.getWidth()) return;
+	//TODO:BIGASS ONE HERE - set limit per shape
+	public static void flood(int row, int col, Color tgtColor) {
 
-		// make sure this pixel hasn't been visited yet
-		if (mark[row][col]) return;
+		boolean mark[][] = new boolean[ (int) Controller.staticMyCanvas.getWidth()][ (int) Controller.staticMyCanvas.getHeight()];
+		int height = (int) Controller.staticMyCanvas.getHeight();
+		int width = (int) Controller.staticMyCanvas.getWidth();
 
-		// make sure this pixel is the right color to fill
 		WritableImage image = Controller.staticMyCanvas.snapshot(new SnapshotParameters(), null);
 		PixelReader reader = image.getPixelReader();
+		Queue<Point2D> queue = new LinkedList<>();
+		Controller.staticGraphicsContext.setStroke(tgtColor);
+/**  Loops run once, 1 break added and code commented only to verify first values on line 39*/
+		for (int i = col; i < col+1; i++)
+			for (int j = row; j < row+1; j++)
+				if (! mark[j][i]) {
+					queue.add(new Point2D(j, i));
 
-		if (reader.getColor(col, row).equals(Color.WHITE))
+					while (! queue.isEmpty()) {
 
-			// fill pixel with target color and mark it as visited
-			Controller.staticGraphicsContext.setFill(tgtColor);
-		Controller.staticGraphicsContext.strokeLine(col, row, col, row);
-		mark[row][col] = true;
-
-
-//		// recursively fill surrounding pixels
-//		// (this is equivalent to depth-first search)
-//		flood(mark, row - 1, col, tgtColor);
-//		flood(mark, row + 1, col, tgtColor);
-//		flood(mark, row, col - 1, tgtColor);
-//		flood(mark, row, col + 1, tgtColor);
+						Point2D p = queue.remove();
+                        System.out.println(p.getX()+" "+p.getY()+" "+Commons.pointInPolygon(p.getX(), p.getY()));
+                        break;
+//						if ((p.getX() < width) && (p.getY() < height) && (p.getX() >= 0) && (p.getY() >= 0)) {
+//							if ((Commons.pointInPolygon(p.getX(), p.getY())) && (!mark[(int) p.getX()][(int) p.getY()])) {
+//								if (reader.getColor((int) p.getX(), (int) p.getY()) != Color.BLACK) {
+//
+//                                    System.out.println("Coloring");
+//									Controller.staticGraphicsContext.strokeLine(p.getX(), p.getY(), p.getX(), p.getY());
+//									mark[(int) p.getX()][(int) p.getY()] = true;
+//
+//									queue.add(new Point2D(p.getX() + 1, p.getY()));
+//									queue.add(new Point2D(p.getX() - 1, p.getY()));
+//									queue.add(new Point2D(p.getX(), p.getY() + 1));
+//									queue.add(new Point2D(p.getX(), p.getY() - 1));
+//								}
+//							}
+//						}
+					}
+				}
 	}
-
 }

@@ -2,6 +2,8 @@ package main;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Point2D;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.paint.Color;
 
 /**
@@ -11,9 +13,12 @@ import javafx.scene.paint.Color;
  */
 public class FloodFillController {
 
-	public void doFloodFill() {
-		boolean mark[][] = new boolean[ (int) Controller.staticMyCanvas.getWidth()][ (int) Controller.staticMyCanvas.getHeight()];
-		ColorFill.flood(mark, 1,2, Color.BLUE);
+	@FXML
+	private ColorPicker targetColor;
+
+	public void doFloodFill(ActionEvent e) {
+		ColorFill.flood((int) Commons.startPoint.getX(), (int) Commons.startPoint.getY(), targetColor.getValue());
+		closeMe(e);
 	}
 
 	@FXML

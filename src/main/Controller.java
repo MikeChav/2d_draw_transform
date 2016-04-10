@@ -43,7 +43,7 @@ public class Controller  implements Initializable {
 
 	private Point2D mouseLocation = null, prevMouseLocation = null;
 
-	static LinkedList<Point2D> listOfPoints = new LinkedList<>();
+	static LinkedList<Point2D> listOfPoints = Commons.listOfPoints;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -73,12 +73,12 @@ public class Controller  implements Initializable {
 
 		staticGraphicsContext.setFill(Color.TRANSPARENT);
 		staticGraphicsContext.fillRect(0, 0, staticMyCanvas.getWidth(), staticMyCanvas.getHeight());
-		staticGraphicsContext.setStroke(Color.WHITE);
+		staticGraphicsContext.setStroke(Color.BLACK);
 		staticGraphicsContext.setLineWidth(1.0);
 
 		staticMyCanvas.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
 				if (e.getButton() == MouseButton.SECONDARY) {
-					Commons.startPoint = Commons.translatePoint(new Point2D(e.getX(), e.getY()));
+					Commons.startPoint = new Point2D(e.getX(), e.getY());
 					contextMenu.show(staticMyCanvas, e.getScreenX(), e.getScreenY());
 				}
 				else
@@ -105,9 +105,6 @@ public class Controller  implements Initializable {
 		if (mouseLocation != null)
 			prevMouseLocation = mouseLocation;
 		mouseLocation = new Point2D(e.getX(), e.getY());
-		Point2D newPoint = Commons.translatePoint(mouseLocation);
-
-		System.out.println("Translated: ("+newPoint.getX()+", "+newPoint.getY()+")");
 
 		listOfPoints.add(mouseLocation);
 		if (listOfPoints.size() == 1)
@@ -134,7 +131,7 @@ public class Controller  implements Initializable {
 		);
 
 		StackPane layout = new StackPane(axes);
-		layout.setStyle("-fx-background-color: slategrey");
+		layout.setStyle("-fx-background-color: white");
 		Canvas v;
 		try {
 			v  = (Canvas) getContainer().getChildren().get(1);

@@ -2,6 +2,8 @@ package main;
 
 import javafx.geometry.Point2D;
 
+import java.util.LinkedList;
+
 /**
  * Created by michael on 4/3/16.
  *
@@ -12,6 +14,9 @@ public class Commons{
 
 	private static double height;
 	private static double width;
+
+	static LinkedList<Point2D> listOfPoints = new LinkedList<>();
+
 
 	public static Point2D startPoint;
 
@@ -74,6 +79,26 @@ public class Commons{
 		for(int x=0;x<length;x++)
 			if(x+1<length)
 				bresenhamLine((int)list[x].getX(), (int)list[x].getY(), (int)list[x + 1].getX(),(int) list[x + 1].getY());
+	}
+
+
+	public static boolean pointInPolygon(double x, double y) {
+
+		int  i, j = listOfPoints.size() - 2;
+		boolean  oddNodes = false;
+		for (i = 0; i < listOfPoints.size(); i++) {
+			Point2D firstPoint = listOfPoints.get(i);
+			Point2D secondPoint = listOfPoints.get(j);
+			if ((firstPoint.getY()< y && secondPoint.getY() >= y
+					||   secondPoint.getY() < y && firstPoint.getY() >= y)
+					&&  (firstPoint.getX() <= x || secondPoint.getX()<=x)) {
+
+				oddNodes^=(firstPoint.getX()+(y-firstPoint.getY())/(secondPoint.getY()-firstPoint.getY())*(secondPoint.getX()-firstPoint.getX())<x);
+			}
+			j=i;
+		}
+
+		return oddNodes;
 	}
 
 
