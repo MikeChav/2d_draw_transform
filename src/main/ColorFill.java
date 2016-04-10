@@ -47,8 +47,7 @@ class ColorFill {
                     }
                 }
             }
-        Controller.staticGraphicsContext.setStroke(Color.BLACK);
-        Commons.Draw(Commons.listOfPoints.toArray(new Point2D[Commons.listOfPoints.size()]));
+        reDrawBorder();
 	}
 
     static void boundary(Point2D p, Color targetColor){
@@ -80,7 +79,7 @@ class ColorFill {
     }
 
 
-    public static void Scanline(Color tgtColor) {
+    static void Scanline(Color tgtColor) {
         for (double yTemp = Controller.ymin; yTemp <= Controller.ymax; yTemp++) {
             ArrayList<Point2D> intersectionPoints = new ArrayList<>();
 
@@ -124,7 +123,7 @@ class ColorFill {
                     Commons.bresenhamLine((int) list.get(x).getX(), (int) list.get(x).getY(), (int) list.get(x + 1).getX(), (int) list.get(x + 1).getY());
             }
         }
-
+        reDrawBorder();
     }
 
     public static Comparator<Point2D> FruitNameComparator
@@ -139,4 +138,9 @@ class ColorFill {
             return -1;
         return 0;
     };
+
+    private static void reDrawBorder() {
+        Controller.staticGraphicsContext.setStroke(Color.BLACK);
+        Commons.Draw(Commons.listOfPoints.toArray(new Point2D[Commons.listOfPoints.size()]));
+    }
 }
