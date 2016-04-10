@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ColorPicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-
 <VBox xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ScanFillController">
     <children>
         <Label text="Scan Line Algorithm">
@@ -18,7 +14,7 @@
                 <Insets left="1.0" />
             </VBox.margin>
         </Label>
-        <Label text="Choose a fill color">
+        <Label text="Choose a fill color" >
             <font>
                 <Font name="Roboto" size="18.0" />
             </font>
@@ -29,7 +25,7 @@
                 <Insets left="25.0" right="25.0" top="3.0" />
             </VBox.margin>
         </Label>
-        <ColorPicker>
+        <ColorPicker  fx:id="targetColor" onAction="#doScanFill">
             <VBox.margin>
                 <Insets left="30.0" top="10.0" />
             </VBox.margin>

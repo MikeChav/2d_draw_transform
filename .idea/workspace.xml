@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="improved the border situation">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics_2/main/Controller.class" afterPath="$PROJECT_DIR$/out/production/graphics_2/main/Controller.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics_2/main/Transformation.class" afterPath="$PROJECT_DIR$/out/production/graphics_2/main/Transformation.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/ColorFill.java" afterPath="$PROJECT_DIR$/src/main/ColorFill.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/FloodFillController.java" afterPath="$PROJECT_DIR$/src/main/FloodFillController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/Controller.java" afterPath="$PROJECT_DIR$/src/main/Controller.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/ScanFillController.java" afterPath="$PROJECT_DIR$/src/main/ScanFillController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/layouts/scanfill.fxml" afterPath="$PROJECT_DIR$/src/main/layouts/scanfill.fxml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -70,18 +70,18 @@
       <file leaf-file-name="FloodFillController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/FloodFillController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
+            <state relative-caret-position="51">
               <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ColorFill.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ColorFill.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/ColorFill.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="137">
-              <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+            <state relative-caret-position="227">
+              <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -89,12 +89,97 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Commons.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/Commons.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1262">
+              <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/Controller.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="376">
+              <caret line="116" column="0" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ScanFillController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/ScanFillController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+              <folding>
+                <element signature="e#413#414#0" expanded="true" />
+                <element signature="e#454#455#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ComboBoxBase.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/javafx-src.zip!/javafx/scene/control/ComboBoxBase.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="113">
+              <caret line="150" column="31" selection-start-line="150" selection-start-column="31" selection-end-line="150" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ObjectPropertyBase.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/javafx-src.zip!/javafx/beans/property/ObjectPropertyBase.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="130">
+              <caret line="131" column="0" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="shear.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/layouts/shear.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="scanfill.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/layouts/scanfill.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="606">
+              <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Transformation.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/Transformation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="502">
+            <state relative-caret-position="2074">
               <caret line="127" column="23" selection-start-line="127" selection-start-column="23" selection-end-line="127" selection-end-column="23" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#355#356#0" expanded="false" />
+                <element signature="e#402#403#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -153,17 +238,17 @@
         <option value="$PROJECT_DIR$/doc/todo" />
         <option value="$PROJECT_DIR$/src/main/controllers/BoundaryFillController.java" />
         <option value="$PROJECT_DIR$/src/test/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/ScanFillController.java" />
         <option value="$PROJECT_DIR$/src/main/BoundaryFillController.java" />
-        <option value="$PROJECT_DIR$/src/main/layouts/scanfill.fxml" />
         <option value="$PROJECT_DIR$/src/main/layouts/boundaryfill.fxml" />
         <option value="$PROJECT_DIR$/src/main/layouts/main.fxml" />
         <option value="$PROJECT_DIR$/src/main/layouts/floodfill.fxml" />
         <option value="$PROJECT_DIR$/src/main/Commons.java" />
-        <option value="$PROJECT_DIR$/src/main/Controller.java" />
         <option value="$PROJECT_DIR$/src/main/Transformation.java" />
         <option value="$PROJECT_DIR$/src/main/FloodFillController.java" />
         <option value="$PROJECT_DIR$/src/main/ColorFill.java" />
+        <option value="$PROJECT_DIR$/src/main/ScanFillController.java" />
+        <option value="$PROJECT_DIR$/src/main/layouts/scanfill.fxml" />
+        <option value="$PROJECT_DIR$/src/main/Controller.java" />
       </list>
     </option>
   </component>
@@ -181,9 +266,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="y" value="27" />
-    <option name="width" value="1280" />
-    <option name="height" value="773" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -309,8 +395,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -404,6 +488,8 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -954,6 +1040,7 @@
       <workItem from="1460271118005" duration="2347000" />
       <workItem from="1460281585832" duration="2455000" />
       <workItem from="1460294065264" duration="5608000" />
+      <workItem from="1460312963738" duration="797000" />
     </task>
     <task id="LOCAL-00001" summary="I don't know, I changed something I guess">
       <created>1458234353140</created>
@@ -1120,7 +1207,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119224000" />
+    <option name="totallyTimeSpent" value="120021000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -1132,28 +1219,28 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="27" width="1280" height="773" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32868218" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33684212" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33660132" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932332" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3263158" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2887218" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2875817" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32868218" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1984375" sideWeight="0.6703755" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19818456" sideWeight="0.6703755" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39869282" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1208,7 +1295,21 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="6" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/ColorFill.java</url>
+          <line>85</line>
+          <properties />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/ScanFillController.java</url>
+          <line>15</line>
+          <properties />
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1217,27 +1318,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/AlertBox.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1403,13 +1483,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar:///usr/java/jdk1.8.0_74/javafx-src.zip!/javafx/geometry/Rectangle2D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="73" column="7" selection-start-line="73" selection-start-column="4" selection-end-line="73" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar:///usr/java/jdk1.8.0_74/javafx-src.zip!/javafx/geometry/Rectangle2D.java" />
     <entry file="file://$PROJECT_DIR$/src/main/ScalingController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1515,28 +1589,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/ScanFillController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/BoundaryFillController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/layouts/scanfill.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="40" column="42" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1587,25 +1643,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Controller.java">
+    <entry file="file://$PROJECT_DIR$/src/main/Transformation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-869">
-          <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+        <state relative-caret-position="2074">
+          <caret line="127" column="23" selection-start-line="127" selection-start-column="23" selection-end-line="127" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#355#356#0" expanded="false" />
+            <element signature="e#402#403#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/FloodFillController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Transformation.java">
+    <entry file="file://$PROJECT_DIR$/src/main/layouts/shear.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="502">
-          <caret line="127" column="23" selection-start-line="127" selection-start-column="23" selection-end-line="127" selection-end-column="23" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/layouts/scanfill.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="606">
+          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/Commons.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
+        <state relative-caret-position="1262">
           <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1613,21 +1695,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/FloodFillController.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/javafx-src.zip!/javafx/beans/property/ObjectPropertyBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+        <state relative-caret-position="130">
+          <caret line="131" column="0" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/javafx-src.zip!/javafx/scene/control/ComboBoxBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="150" column="31" selection-start-line="150" selection-start-column="31" selection-end-line="150" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/ScanFillController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding>
+            <element signature="e#413#414#0" expanded="true" />
+            <element signature="e#454#455#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/ColorFill.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+        <state relative-caret-position="227">
+          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="116" column="0" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
