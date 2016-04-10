@@ -67,15 +67,17 @@ class ColorFill {
             if (!(x > Controller.staticMyCanvas.getWidth() || x < 0 || y < 0 || y > Controller.staticMyCanvas.getHeight())) {
                 if (Commons.pointInPolygon(x, y)) {
                     currentColor = px.getColor((int) x, (int) y);
-                    if ((currentColor != borderColor) && (currentColor != targetColor))
+                    if ((currentColor != borderColor) && (currentColor != targetColor)) {
                         Controller.staticGraphicsContext.strokeLine(x, y, x, y);
-                    points.push(new Point2D(++x, y));
-                    points.push(new Point2D(--x, y));
-                    points.push(new Point2D(x, ++y));
-                    points.push(new Point2D(x, --y));
+                        points.push(new Point2D(++x, y));
+                        points.push(new Point2D(--x, y));
+                        points.push(new Point2D(x, ++y));
+                        points.push(new Point2D(x, --y));
+                    }
                 }
             }
         }
+        reDrawBorder();
     }
 
 
