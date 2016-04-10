@@ -69,10 +69,10 @@ class ColorFill {
                     currentColor = px.getColor((int) x, (int) y);
                     if ((currentColor != borderColor) && (currentColor != targetColor)) {
                         Controller.staticGraphicsContext.strokeLine(x, y, x, y);
-                        points.push(new Point2D(++x, y));
-                        points.push(new Point2D(--x, y));
-                        points.push(new Point2D(x, ++y));
-                        points.push(new Point2D(x, --y));
+                        points.push(new Point2D(x + 1, y));
+                        points.push(new Point2D(x - 1, y));
+                        points.push(new Point2D(x, y + 1));
+                        points.push(new Point2D(x, y - 1));
                     }
                 }
             }
@@ -128,7 +128,7 @@ class ColorFill {
         reDrawBorder();
     }
 
-    public static Comparator<Point2D> FruitNameComparator
+    private static Comparator<Point2D> FruitNameComparator
             = (o1, o2) -> {
 
         double point1 = o1.getX();
