@@ -19,7 +19,7 @@ class Transformation {
 
 
 	Transformation(){
-		this.listOfPoints = Controller.listOfPoints;
+		this.listOfPoints = Commons.listOfPoints;
 	}
 
 	private boolean ensureDrawnPolygon(){

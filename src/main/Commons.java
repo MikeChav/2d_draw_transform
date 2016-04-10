@@ -85,21 +85,20 @@ public class Commons{
 	public static boolean pointInPolygon(double x, double y) {
 
 		int  i, j = listOfPoints.size() - 2;
+
 		boolean  oddNodes = false;
-		for (i = 0; i < listOfPoints.size(); i++) {
+		for (i = 0; i < listOfPoints.size() -1; i++) {
 			Point2D firstPoint = listOfPoints.get(i);
 			Point2D secondPoint = listOfPoints.get(j);
-			if ((firstPoint.getY()< y && secondPoint.getY() >= y
-					||   secondPoint.getY() < y && firstPoint.getY() >= y)
-					&&  (firstPoint.getX() <= x || secondPoint.getX()<=x)) {
-
-				oddNodes^=(firstPoint.getX()+(y-firstPoint.getY())/(secondPoint.getY()-firstPoint.getY())*(secondPoint.getX()-firstPoint.getX())<x);
-			}
+			if ((((firstPoint.getY() < y) && (secondPoint.getY() >= y))
+                    || ((secondPoint.getY() < y) && (firstPoint.getY() >= y)))
+                    && ((firstPoint.getX() <= x) || (secondPoint.getX() <= x))) {
+                if (firstPoint.getX() + (y - firstPoint.getY()) / (secondPoint.getY() - firstPoint.getY()) * (secondPoint.getX() - firstPoint.getX()) < x) {
+                    oddNodes = !oddNodes;
+                }
+            }
 			j=i;
 		}
-
 		return oddNodes;
 	}
-
-
 }

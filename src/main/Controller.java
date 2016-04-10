@@ -43,8 +43,6 @@ public class Controller  implements Initializable {
 
 	private Point2D mouseLocation = null, prevMouseLocation = null;
 
-	static LinkedList<Point2D> listOfPoints = Commons.listOfPoints;
-
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		staticContainer = container;
@@ -100,27 +98,27 @@ public class Controller  implements Initializable {
 
 	private List<Point2D> drawPolygon(MouseEvent e){
 		if (mouseLocation == null && prevMouseLocation == null)
-			listOfPoints = new LinkedList<>();
+            Commons.listOfPoints = new LinkedList<>();
 
 		if (mouseLocation != null)
 			prevMouseLocation = mouseLocation;
 		mouseLocation = new Point2D(e.getX(), e.getY());
 
-		listOfPoints.add(mouseLocation);
-		if (listOfPoints.size() == 1)
+		Commons.listOfPoints.add(mouseLocation);
+		if (Commons.listOfPoints.size() == 1)
 			Commons.bresenhamLine(mouseLocation.getX(), mouseLocation.getY(), mouseLocation.getX(), mouseLocation.getY());
 		else{
 			if(e.getClickCount() == 1)
 				Commons.bresenhamLine(prevMouseLocation.getX(), prevMouseLocation.getY(), mouseLocation.getX(), mouseLocation.getY());
-			if (e.getClickCount() == 2 || listOfPoints.size() == 8) {
-				Point2D firstPoint = listOfPoints.get(0);
+			if (e.getClickCount() == 2 || Commons.listOfPoints.size() == 8) {
+				Point2D firstPoint = Commons.listOfPoints.get(0);
 				Commons.bresenhamLine(mouseLocation.getX(), mouseLocation.getY(), firstPoint.getX(), firstPoint.getY());
 				mouseLocation = null;
 				prevMouseLocation = null;
-				listOfPoints.add(firstPoint);
+				Commons.listOfPoints.add(firstPoint);
 			}
 		}
-		return listOfPoints;
+		return Commons.listOfPoints;
 	}
 
 	static void setScales(int maxX, int maxY) {
