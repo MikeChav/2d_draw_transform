@@ -92,7 +92,7 @@ public class Controller  implements Initializable {
 	}
 
 	@FXML
-	private  void exitAll(){
+	private void exitAll(){
 		staticExitAll();
 	}
 

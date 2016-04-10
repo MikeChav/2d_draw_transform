@@ -17,10 +17,10 @@ public class Main extends Application{
         Window.setScene(new Scene(mainLayout, Commons.getWidth(), Commons.getHeight()));
         Window.show();
 
-        Window.setOnCloseRequest(e -> {
-            e.consume();
-            Controller.staticExitAll();
-        });
+//        Window.setOnCloseRequest(e -> {
+//            e.consume();
+//            Controller.staticExitAll();
+//        });
 	}
 
     public static void main(String[] args) {

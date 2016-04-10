@@ -1,10 +1,14 @@
 package main;
 
 import javafx.geometry.Point2D;
+import javafx.scene.SnapshotParameters;
+import javafx.scene.image.PixelReader;
+import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 /**
  * Created by michael on 4/4/16.
@@ -48,4 +52,32 @@ class ColorFill {
         Controller.staticGraphicsContext.setStroke(Color.BLACK);
         Commons.Draw(Commons.listOfPoints.toArray(new Point2D[Commons.listOfPoints.size()]));
 	}
+
+    static void boundary(Point2D p, Color targetColor){
+        Stack<Point2D> points = new Stack<>();
+        points.add(p);
+        Controller.staticGraphicsContext.setStroke(targetColor);
+        Color borderColor = Color.BLACK;
+
+        WritableImage img = Controller.staticMyCanvas.snapshot(new SnapshotParameters(), null);
+        PixelReader px = img.getPixelReader();
+        Color currentColor;
+
+        while(! points.isEmpty()) {
+            Point2D currentPoint = points.pop();
+            double x = currentPoint.getX();
+            double y = currentPoint.getY();
+            if (!(x > Controller.staticMyCanvas.getWidth() || x < 0 || y < 0 || y > Controller.staticMyCanvas.getHeight())) {
+                if (Commons.pointInPolygon(x, y)) {
+                    currentColor = px.getColor((int) x, (int) y);
+                    if ((currentColor != borderColor) && (currentColor != targetColor))
+                        Controller.staticGraphicsContext.strokeLine(x, y, x, y);
+                    points.push(new Point2D(++x, y));
+                    points.push(new Point2D(--x, y));
+                    points.push(new Point2D(x, ++y));
+                    points.push(new Point2D(x, --y));
+                }
+            }
+        }
+    }
 }

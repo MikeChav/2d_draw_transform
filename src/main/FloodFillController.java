@@ -14,7 +14,8 @@ public class FloodFillController {
 	@FXML
 	private ColorPicker targetColor;
 
-	public void doFloodFill(ActionEvent e) {
+    @FXML
+	private void doFloodFill(ActionEvent e) {
 		ColorFill.flood((int) Commons.startPoint.getX(), (int) Commons.startPoint.getY(), targetColor.getValue());
 		closeMe(e);
 	}
