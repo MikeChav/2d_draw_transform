@@ -1,7 +1,12 @@
 package main;
 
 import javafx.geometry.Point2D;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Formatter;
 import java.util.LinkedList;
 
 /**
@@ -72,6 +77,11 @@ public class Commons{
 			if (e2 > dy) { err += dy; x0 += sx; } /* e_xy+e_x > 0 */
 			if (e2 < dx) { err += dx; y0 += sy; } /* e_xy+e_y < 0 */
 		}
+        NumberFormat formatter = new DecimalFormat("#0.00");
+        Controller.staticGraphicsContext.setFont(Font.font(null, FontWeight.LIGHT, 11));
+        String s = "("+formatter.format((translateX(x0)))+", "+formatter.format(translateY(y0))+")";
+        Controller.staticGraphicsContext.strokeText(s, x0, y0-5);
+
 	}
 
 	public static void Draw(Point2D[] list){

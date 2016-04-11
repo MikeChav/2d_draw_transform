@@ -56,7 +56,7 @@ class ColorFill {
         Stack<Point2D> points = new Stack<>();
         points.add(p);
         staticGraphicsContext.setStroke(targetColor);
-        Color borderColor = Color.BLACK;
+//        Color borderColor = Color.BLACK;
 
         WritableImage img = staticMyCanvas.snapshot(new SnapshotParameters(), null);
         PixelReader px = img.getPixelReader();
@@ -68,7 +68,7 @@ class ColorFill {
             double y = currentPoint.getY();
             if (!(((x > staticMyCanvas.getWidth()) || (x < 0) || (y < 0) || (y > staticMyCanvas.getHeight()))) && Commons.pointInPolygon(x, y)) {
                 currentColor = px.getColor((int) x, (int) y);
-                if ((currentColor != borderColor) && (currentColor != targetColor)) {
+                if ((currentColor != targetColor)) {
                     staticGraphicsContext.strokeLine(x, y, x, y);
                     points.push(new Point2D(x + 1, y));
                     points.push(new Point2D(x - 1, y));

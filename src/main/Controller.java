@@ -39,7 +39,7 @@ public class Controller  implements Initializable {
 	@FXML
 	VBox myBox;
 
-    static int AxisWidth, AxisHeight, XRange=8, YRange=6;
+    static int AxisWidth, AxisHeight, XRange=10, YRange=10;
 
 	static double ymin=100000,ymax=0;
 
@@ -56,8 +56,10 @@ public class Controller  implements Initializable {
 		staticGraphicsContext = myCanvas.getGraphicsContext2D();
 		staticMyCanvas = myCanvas;
 
-		staticMyCanvas.setHeight(Commons.getHeight() - menuBar.getHeight());
-		staticMyCanvas.setWidth(Commons.getWidth());
+//		staticMyCanvas.setHeight(Commons.getHeight() - menuBar.getHeight());
+//		staticMyCanvas.setWidth(staticMyCanvas.getHeight());
+
+
 
 		AxisWidth = (int) staticMyCanvas.getWidth();
         AxisHeight = (int) staticMyCanvas.getHeight();
