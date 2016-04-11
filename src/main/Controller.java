@@ -2,6 +2,7 @@
 package main;
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Point2D;
@@ -201,4 +202,9 @@ public class Controller  implements Initializable {
 	private void changeScale() {
 		new AlertBox("changescale", "", 337, 124);
 	}
+
+    @FXML
+    private void clearAll(ActionEvent actionEvent) {
+        Controller.staticGraphicsContext.clearRect(0, 0, staticMyCanvas.getWidth(), staticMyCanvas.getHeight());
+    }
 }

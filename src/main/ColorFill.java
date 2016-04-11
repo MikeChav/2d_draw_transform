@@ -8,6 +8,8 @@ import javafx.scene.paint.Color;
 
 import java.util.*;
 
+import static main.Controller.*;
+
 /**
  * Created by michael on 4/4/16.
  *
@@ -17,12 +19,12 @@ class ColorFill {
 
 	static void flood(int row, int col, Color tgtColor) {
 
-		boolean mark[][] = new boolean[ (int) Controller.staticMyCanvas.getWidth()][ (int) Controller.staticMyCanvas.getHeight()];
-		int height = (int) Controller.staticMyCanvas.getHeight();
-		int width = (int) Controller.staticMyCanvas.getWidth();
+		boolean mark[][] = new boolean[ (int) staticMyCanvas.getWidth()][ (int) staticMyCanvas.getHeight()];
+		int height = (int) staticMyCanvas.getHeight();
+		int width = (int) staticMyCanvas.getWidth();
 
 		Queue<Point2D> queue = new LinkedList<>();
-		Controller.staticGraphicsContext.setStroke(tgtColor);
+		staticGraphicsContext.setStroke(tgtColor);
 		for (int i = col; i < height; i++)
 			for (int j = row; j < width; j++) {
 				if (! mark[j][i]) {
@@ -35,7 +37,7 @@ class ColorFill {
                     if ((p.getX() < width) && (p.getY() < height) && (p.getX() >= 0) && (p.getY() >= 0)) {
                         if (Commons.pointInPolygon(p.getX(), p.getY()) && (!mark[(int) p.getX()][(int) p.getY()]))  {
 
-                                Controller.staticGraphicsContext.strokeLine(p.getX(), p.getY(), p.getX(), p.getY());
+                                staticGraphicsContext.strokeLine(p.getX(), p.getY(), p.getX(), p.getY());
                                 mark[(int) p.getX()][(int) p.getY()] = true;
 
                                 queue.add(new Point2D(p.getX() + 1, p.getY()));
@@ -53,10 +55,10 @@ class ColorFill {
     static void boundary(Point2D p, Color targetColor){
         Stack<Point2D> points = new Stack<>();
         points.add(p);
-        Controller.staticGraphicsContext.setStroke(targetColor);
+        staticGraphicsContext.setStroke(targetColor);
         Color borderColor = Color.BLACK;
 
-        WritableImage img = Controller.staticMyCanvas.snapshot(new SnapshotParameters(), null);
+        WritableImage img = staticMyCanvas.snapshot(new SnapshotParameters(), null);
         PixelReader px = img.getPixelReader();
         Color currentColor;
 
@@ -64,16 +66,14 @@ class ColorFill {
             Point2D currentPoint = points.pop();
             double x = currentPoint.getX();
             double y = currentPoint.getY();
-            if (!(x > Controller.staticMyCanvas.getWidth() || x < 0 || y < 0 || y > Controller.staticMyCanvas.getHeight())) {
-                if (Commons.pointInPolygon(x, y)) {
-                    currentColor = px.getColor((int) x, (int) y);
-                    if ((currentColor != borderColor) && (currentColor != targetColor)) {
-                        Controller.staticGraphicsContext.strokeLine(x, y, x, y);
-                        points.push(new Point2D(x + 1, y));
-                        points.push(new Point2D(x - 1, y));
-                        points.push(new Point2D(x, y + 1));
-                        points.push(new Point2D(x, y - 1));
-                    }
+            if (!(((x > staticMyCanvas.getWidth()) || (x < 0) || (y < 0) || (y > staticMyCanvas.getHeight()))) && Commons.pointInPolygon(x, y)) {
+                currentColor = px.getColor((int) x, (int) y);
+                if ((currentColor != borderColor) && (currentColor != targetColor)) {
+                    staticGraphicsContext.strokeLine(x, y, x, y);
+                    points.push(new Point2D(x + 1, y));
+                    points.push(new Point2D(x - 1, y));
+                    points.push(new Point2D(x, y + 1));
+                    points.push(new Point2D(x, y - 1));
                 }
             }
         }
@@ -82,7 +82,7 @@ class ColorFill {
 
 
     static void Scanline(Color tgtColor) {
-        for (double yTemp = Controller.ymin; yTemp <= Controller.ymax; yTemp++) {
+        for (double yTemp = ymin; yTemp <= ymax; yTemp++) {
             ArrayList<Point2D> intersectionPoints = new ArrayList<>();
 
             for (int p = 0; p < Commons.listOfPoints.size() - 1; p++) {
@@ -115,11 +115,11 @@ class ColorFill {
             //you have to sort the intersection points of every scanline from the lowest x value to thr highest
             Collections.sort(intersectionPoints, FruitNameComparator);
 
-            Controller.pointsOfScanline.addAll(intersectionPoints);
+            pointsOfScanline.addAll(intersectionPoints);
 
-            ArrayList<Point2D> list = Controller.pointsOfScanline;
-            Controller.staticGraphicsContext.setStroke(tgtColor);
-            int length = Controller.pointsOfScanline.size();
+            ArrayList<Point2D> list = pointsOfScanline;
+            staticGraphicsContext.setStroke(tgtColor);
+            int length = pointsOfScanline.size();
             for(int x=0;x<length;x++) {
                 if (x + 1 < length)
                     Commons.bresenhamLine((int) list.get(x).getX(), (int) list.get(x).getY(), (int) list.get(x + 1).getX(), (int) list.get(x + 1).getY());
@@ -142,7 +142,7 @@ class ColorFill {
     };
 
     private static void reDrawBorder() {
-        Controller.staticGraphicsContext.setStroke(Color.BLACK);
+        staticGraphicsContext.setStroke(Color.BLACK);
         Commons.Draw(Commons.listOfPoints.toArray(new Point2D[Commons.listOfPoints.size()]));
     }
 }

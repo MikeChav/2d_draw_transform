@@ -2,6 +2,7 @@ package main;
 
 import javafx.geometry.Point2D;
 import javafx.scene.control.Alert;
+import javafx.scene.paint.Color;
 
 import java.util.LinkedList;
 
@@ -125,6 +126,8 @@ class Transformation {
 
 			PointsResult[z] =(Commons.translatebackPoint(new Point2D(xc,yc)));
 		}
+        Controller.staticGraphicsContext.setStroke(Color.RED);
 		Commons.Draw(PointsResult);
+        Controller.staticGraphicsContext.setStroke(Color.BLACK);
 	}
 }
